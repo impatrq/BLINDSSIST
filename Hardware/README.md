@@ -1,4 +1,4 @@
-# Harwarwe
+# Hardwarwe
 
 LIDAR: Un láser LIDAR (Light Detection and Ranging) funciona emitiendo pulsos de luz láser hacia una superficie y midiendo el tiempo que tarda cada pulso en rebotar y regresar al sensor. Con esa información, se calcula la distancia precisa entre el sensor y el objeto o superficie.
 
