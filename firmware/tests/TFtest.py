@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*
 import serial
 
-ser = serial.Serial("/dev/ttyAMA0", 115200)
+ser = serial.Serial("/dev/ttyS0", 115200)
 
 def getTFminiData():
     while True:
@@ -24,4 +24,5 @@ if __name__ == '__main__':
         getTFminiData()
     except KeyboardInterrupt:   # Ctrl+C
         if ser != None:
+
             ser.close()
