@@ -3,27 +3,26 @@ import time
 
 ser = serial.Serial("/dev/ttyS0", 115200)
 
-def getTFminiData():
-    while True:
-        #time.sleep(0.1)
-        count = ser.in_waiting
-        if count > 8:
-            recv = ser.read(9)  
-            ser.reset_input_buffer()  
-            # type(recv), 'str' in python2(recv[0] = 'Y'), 'bytes' in python3(recv[0] = 89)
-            # type(recv[0]), 'str' in python2, 'int' in python3 
+while True:
+    #time.sleep(0.1)
+    count = ser.in_waiting
+    if count > 8:
+        recv = ser.read(9)  
+        ser.reset_input_buffer()  
+        # type(recv), 'str' in python2(recv[0] = 'Y'), 'bytes' in python3(recv[0] = 89)
+        # type(recv[0]), 'str' in python2, 'int' in python3 
             
-            if recv[0] == 0x59 and recv[1] == 0x59:     #python3
-                distance = recv[2] + recv[3] * 256
-                strength = recv[4] + recv[5] * 256
-                ser.reset_input_buffer()
-                print (distance)
+        if recv[0] == 0x59 and recv[1] == 0x59:     #python3
+            distance = recv[2] + recv[3] * 256
+            strength = recv[4] + recv[5] * 256
+            ser.reset_input_buffer()
+            print (distance)
 
-            if recv[0] == 'Y' and recv[1] == 'Y': # 0x59 is 'Y'
-                low = int(recv[2].encode('hex'), 16)
-                high = int(recv[3].encode('hex'), 16)
-                distance = low + high * 256
-                print(distance)
+        if recv[0] == 'Y' and recv[1] == 'Y': # 0x59 is 'Y'
+            low = int(recv[2].encode('hex'), 16)
+            high = int(recv[3].encode('hex'), 16)
+            distance = low + high * 256
+            print(distance)
           
             # you can also distinguish python2 and python3: 
             #import sys
