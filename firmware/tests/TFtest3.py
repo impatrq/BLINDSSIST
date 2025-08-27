@@ -2,6 +2,7 @@
 import serial
 import time
 
+print ("0")
 ser = serial.Serial("/dev/serial0", 115200)
 print ("1")
 def getTFminiData():
