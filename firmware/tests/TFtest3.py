@@ -4,11 +4,14 @@ import time
 ser = serial.Serial("/dev/serial0", 115200)
 
 while True:
+    printf ("primer proceso")
     #time.sleep(0.1)
     count = ser.in_waiting
+    printf ("segundo proceso")
     if count > 8:
         recv = ser.read(9)  
-        ser.reset_input_buffer()  
+        ser.reset_input_buffer()
+        printf ("tercer proceso")
         # type(recv), 'str' in python2(recv[0] = 'Y'), 'bytes' in python3(recv[0] = 89)
         # type(recv[0]), 'str' in python2, 'int' in python3 
             
