@@ -9,7 +9,7 @@ import os # Para verificar la existencia del modelo YOLO
 # Importar YOLO 
 from ultralytics import YOLO
 
-# --- Configuración de Audio ---
+# Configuración de Audio 
 # Inicializar motor de voz
 
 try:
@@ -34,7 +34,7 @@ except Exception as e:
     sys.exit(1)
 
 
-# --- Configuración del Modelo y Clases ---
+# Configuración del Modelo y Clases 
 # Ruta al modelo YOLOv8
 MODELO_PATH = "yolov8n.pt" # Este archivo esté en el mismo directorio
 
@@ -65,22 +65,22 @@ traduccion = {
     'tv': 'televisor'
 }
 
-# Clases permitidas para la detección, basadas en las claves del diccionario de traducción
+# Clases permitidas para la detección
 clases_permitidas = list(traduccion.keys())
 print(f"[INFO] Clases permitidas para detección: {clases_permitidas}")
 
-# --- Variables de Detección ---
+# Variables de Detección 
 ultimos_objetos = {} # Para guardar la cantidad de cada objeto detectado anteriormente
-CONFIDENCE_THRESHOLD = 0.6 # Puedes ajustar este valor (0.0 a 1.0) para menos/más detecciones
+CONFIDENCE_THRESHOLD = 0.6 # ajustar este valor (0.0 a 1.0) para mas o menos detecciones
 
-# --- Manejo de Señales para Salir ---
-def salir_graciosamente(sig, frame):
+#  Manejo de Señales para Salir 
+def salir_rapidamente(sig, frame):
     print("\n[INFO] Señal de interrupción recibida. Terminando programa.")
     voz.stop() # Detener el motor de voz
     sys.exit(0)
 
 # Registrar el manejador para Ctrl+C
-signal.signal(signal.SIGINT, salir_graciosamente)
+signal.signal(signal.SIGINT, salir_rapidamente)
 
 # --- Función de Captura de Cámara (usando libcamera-still) ---
 def capturar_frame():
@@ -92,9 +92,9 @@ def capturar_frame():
         
         command = [
             'libcamera-still', '-t', '1',
-            '--width', '640', '--height', '480',
+            '--width', '640', '--height', '480', # no mostrar vista previa
             '-o', '-', '--denoise', 'off',
-            '--nopreview' # Asegura que no se muestre una ventana de vista previa
+            '--nopreview' 
         ]
         proceso = subprocess.Popen(
             command,
@@ -124,7 +124,7 @@ def capturar_frame():
         print(f"[ERROR] Fallo al capturar frame: {e}")
         return None
 
-# --- Bucle Principal de Detección ---
+#  Bucle Principal de Detección 
 print("\n[INFO] Iniciando detección de objetos. Presiona Ctrl+C para salir.")
 voz.say("Iniciando detección de objetos.")
 voz.runAndWait()
@@ -132,11 +132,11 @@ voz.runAndWait()
 while True:
     frame = capturar_frame()
     if frame is None:
-        # Ya se imprimió un error en capturar_frame, se continua al siguiente ciclo
+        # Si ya se imprimió un error en capturar_frame, se continua al siguiente ciclo
         continue
 
     # Realizar detección con YOLO
-    resultados = modelo(frame, verbose=False)[0] # verbose=False para no imprimir cada inferencia (evitar exceso de tomas)
+    resultados = modelo(frame, verbose=False)[0] # verbose=False (evitar exceso de tomas)
 
     objetos_actuales = {} # Diccionario para las detecciones en el frame actual
 
@@ -149,7 +149,7 @@ while True:
         if clase_nombre in clases_permitidas and confianza > CONFIDENCE_THRESHOLD:
             objetos_actuales[clase_nombre] = objetos_actuales.get(clase_nombre, 0) + 1
 
-    # --- Anunciar Detecciones ---
+    # Anunciar Detecciones 
     anuncios_pendientes = []
 
     # Identificar objetos nuevos o cambios en cantidad
