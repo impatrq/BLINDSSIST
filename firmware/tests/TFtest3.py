@@ -3,14 +3,10 @@ import serial
 import time
 ser = serial.Serial("/dev/ttyS0", 115200)
 def getTFminiData():
-    print ("2")
     while True:
-        print ("3")
         #time.sleep(0.1)
         count = ser.in_waiting
-        print ("4")
         if count > 8:
-            print ("5")
             recv = ser.read(9)  
             ser.reset_input_buffer()  
             # type(recv), 'str' in python2(recv[0] = 'Y'), 'bytes' in python3(recv[0] = 89)
