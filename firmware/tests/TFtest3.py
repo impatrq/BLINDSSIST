@@ -1,18 +1,12 @@
 # -*- coding: utf-8 -*
 import serial
 import time
-print ("0")
-ser = serial.Serial("/dev/serial0", 115200)
-print ("1")
+ser = serial.Serial("/dev/ttyS0", 115200)
 def getTFminiData():
-    print ("2")
     while True:
-        print ("3")
         #time.sleep(0.1)
         count = ser.in_waiting
-        print ("4")
         if count > 8:
-            print ("5")
             recv = ser.read(9)  
             ser.reset_input_buffer()  
             # type(recv), 'str' in python2(recv[0] = 'Y'), 'bytes' in python3(recv[0] = 89)
@@ -23,7 +17,7 @@ def getTFminiData():
                 distance = recv[2] + recv[3] * 256
                 strength = recv[4] + recv[5] * 256
                 ser.reset_input_buffer()
-                print (distance)
+                return distance
                 
             if recv[0] == 'Y' and recv[1] == 'Y':     #python2
                 lowD = int(recv[2].encode('hex'), 16)      
@@ -32,9 +26,10 @@ def getTFminiData():
                 highS = int(recv[5].encode('hex'), 16)
                 distance = lowD + highD * 256
                 strength = lowS + highS * 256
-                print (distance)
-                
-            
+                return distance
+
+print (distance)
+
             # you can also distinguish python2 and python3: 
             #import sys
             #sys.version[0] == '2'    #True, python2
