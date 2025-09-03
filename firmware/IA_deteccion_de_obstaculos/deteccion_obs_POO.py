@@ -154,7 +154,7 @@ class Main:
 
     def __anunciar_detecciones(self, objetos_actuales):
         
-        """compara las detecciones y anuncia los cambios"""
+        """compara las detecciones y anuncia l"""
         anuncios = []
         
         for class_name, count in objetos_actuales.items():
