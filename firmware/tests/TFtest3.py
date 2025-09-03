@@ -28,7 +28,7 @@ def getTFminiData():
                 strength = lowS + highS * 256
                 return distance
 
-print distance
+print (distance)
 
             # you can also distinguish python2 and python3: 
             #import sys
