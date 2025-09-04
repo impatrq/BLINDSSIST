@@ -1,28 +1,25 @@
-# -*- coding: utf-8 -*
+# -*- coding: utf-8 -*-
 import serial
+import time
 
-ser = serial.Serial("/dev/ttyS0", 115200)
+ser = serial.Serial("/dev/serial0", 115200, timeout=1)
 
 def getTFminiData():
     while True:
-        count = ser.in_waiting
-        if count > 8:
+        if ser.in_waiting >= 9:
             recv = ser.read(9)
-            ser.reset_input_buffer()
-            if recv[0] == 'Y' and recv[1] == 'Y': # 0x59 is 'Y'
-                low = int(recv[2].encode('hex'), 16)
-                high = int(recv[3].encode('hex'), 16)
-                distance = low + high * 256
-                print(distance)
-                
-
+            if recv[0] == 0x59 and recv[1] == 0x59:  # cabecera válida
+                low = recv[2]
+                high = recv[3]
+                distance = low + (high << 8)
+                print("Distancia:", distance, "cm", flush=True)
+        time.sleep(0.01)  # evita 100% CPU
 
 if __name__ == '__main__':
     try:
-        if ser.is_open == False:
+        if not ser.is_open:
             ser.open()
         getTFminiData()
-    except KeyboardInterrupt:   # Ctrl+C
-        if ser != None:
-
+    except KeyboardInterrupt:
+        if ser:
             ser.close()
