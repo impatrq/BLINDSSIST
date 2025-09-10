@@ -1,21 +1,17 @@
-# audio_test.py
-import pyttsx3
+import subprocess
+import time
 
-# Inicializar el motor de pyttsx3. Especificamos el driver.
-engine = pyttsx3.init(driverName='espeak')
+print("Probando la salida de audio...")
 
-# Configurar la velocidad y el volumen
-engine.setProperty('rate', 150)
-engine.setProperty('volume', 0.9)
+try:
+    # Llama a espeak con un comando simple
+    comando_espeak = ['espeak', "Hello, this is a test from Python."]
+    subprocess.run(comando_espeak, check=True)
+    print("Comando de espeak ejecutado correctamente.")
 
-# Texto que se va a reproducir
-texto_a_hablar = "¡Prueba de audio exitosa! El sistema de sonido está funcionando correctamente."
-print("Reproduciendo: " + texto_a_hablar)
+except FileNotFoundError:
+    print("Error: El comando 'espeak' no se encontró. Asegúrate de que esté instalado.")
+except Exception as e:
+    print(f"Ocurrió un error: {e}")
 
-# Reproducir el texto
-engine.say(texto_a_hablar)
-
-# Esperar a que el motor termine de hablar
-engine.runAndWait()
-
-print("Prueba de audio finalizada.")
+print("Prueba finalizada.")
