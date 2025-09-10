@@ -1,37 +1,17 @@
-# cam_test.py
-from picamera2 import Picamera2
+import subprocess
 import time
-import cv2
 
-# Inicializar el objeto Picamera2
-picam2 = Picamera2()
-
-# Configurar la cámara para la vista previa
-config = picam2.create_preview_configuration(main={"size": (640, 480)})
-picam2.configure(config)
-
-# Iniciar la cámara
-picam2.start()
-
-print("Cámara iniciada. Capturando un frame de prueba...")
-
-# Esperar un momento para que la cámara se caliente
-time.sleep(2)
+print("Probando la salida de audio...")
 
 try:
-    # Capturar un frame de la cámara
-    frame = picam2.capture_array()
-    
-    # Si la captura es exitosa, se imprime un mensaje
-    if frame is not None:
-        print("¡Captura de frame exitosa! La cámara funciona correctamente.")
-    else:
-        print("Error: No se pudo capturar un frame.")
+    # Llama a espeak con un comando simple
+    comando_espeak = ['espeak', "Hello, this is a test from Python."]
+    subprocess.run(comando_espeak, check=True)
+    print("Comando de espeak ejecutado correctamente.")
 
+except FileNotFoundError:
+    print("Error: El comando 'espeak' no se encontró. Asegúrate de que esté instalado.")
 except Exception as e:
-    print(f"Ocurrió un error al capturar el frame: {e}")
+    print(f"Ocurrió un error: {e}")
 
-finally:
-    # Detener la cámara
-    picam2.stop()
-    print("Cámara detenida. Prueba finalizada.")
+print("Prueba finalizada.")
