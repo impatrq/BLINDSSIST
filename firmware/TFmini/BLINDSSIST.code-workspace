@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"name": "BLINDSSIST",
+			"path": "../.."
+		},
+		{
+			"name": "soft_uart",
+			"path": "../../../../soft_uart"
+		}
+	],
+	"settings": {}
+}
