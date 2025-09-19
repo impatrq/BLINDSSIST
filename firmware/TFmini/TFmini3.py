@@ -1,46 +1,57 @@
-# -*- coding: utf-8 -*
 import serial
 import time
+import threading
 
-ser = serial.Serial("COM12", 115200)
+# Diccionario global para guardar las distancias
+distancias = {
+    "uart1": None,
+    "uart2": None,
+    "uart3": None,
+}
 
-def getTFminiData():
+def getTFminiData(port, key_name):
+    ser = serial.Serial(port, 115200, timeout=1)
+    
     while True:
-        #time.sleep(0.1)
-        count = ser.in_waiting
-        if count > 8:
-            recv = ser.read(9)  
-            ser.reset_input_buffer()  
-            # type(recv), 'str' in python2(recv[0] = 'Y'), 'bytes' in python3(recv[0] = 89)
-            # type(recv[0]), 'str' in python2, 'int' in python3 
-            
-            if recv[0] == 0x59 and recv[1] == 0x59:     #python3
-                distance = recv[2] + recv[3] * 256
-                strength = recv[4] + recv[5] * 256
-                ser.reset_input_buffer()
-                return distance, strength
-                
-            if recv[0] == 'Y' and recv[1] == 'Y':     #python2
-                lowD = int(recv[2].encode('hex'), 16)      
-                highD = int(recv[3].encode('hex'), 16)
-                lowS = int(recv[4].encode('hex'), 16)      
-                highS = int(recv[5].encode('hex'), 16)
-                distance = lowD + highD * 256
-                strength = lowS + highS * 256
-                return distance, strength
-                
-            
-            # you can also distinguish python2 and python3: 
-            #import sys
-            #sys.version[0] == '2'    #True, python2
-            #sys.version[0] == '3'    #True, python3
+        if ser.in_waiting > 8:
+            recv = ser.read(9)
+            if recv[0] == 0x59 and recv[1] == 0x59:  # cabecera válida
+                low = recv[2]
+                high = recv[3]
+                distance = low + (high << 8)
+                # Guardamos el valor en el diccionario global
+                distancias[key_name] = distance
+        time.sleep(0.01)  # evita 100% CPU
 
+# Funciones separadas para cada UART (manteniendo formato)
+def getTFminiData_uart1():
+    getTFminiData("/dev/serial0", "uart1")
+
+def getTFminiData_uart2():
+    getTFminiData("/dev/ttyUSB1", "uart2")
+
+def getTFminiData_uart3():
+    getTFminiData("/dev/ttyUSB2", "uart3")
 
 if __name__ == '__main__':
     try:
-        if ser.is_open == False:
-            ser.open()
-        getTFminiData()
-    except KeyboardInterrupt:   # Ctrl+C
-        if ser != None:
-            ser.close()
+        # Crear un hilo por cada lectura
+        t1 = threading.Thread(target=getTFminiData_uart1, daemon=True)
+        t2 = threading.Thread(target=getTFminiData_uart2, daemon=True)
+        t3 = threading.Thread(target=getTFminiData_uart3, daemon=True)
+
+        # Iniciar los hilos
+        t1.start()
+        t2.start()
+        t3.start()
+
+        # Bucle principal donde puedes usar los valores
+        while True:
+            print("UART1:", distancias["uart1"], "cm")
+            print("UART2:", distancias["uart2"], "cm")
+            print("UART3:", distancias["uart3"], "cm")
+            print("-" * 30)
+            time.sleep(1)
+
+    except KeyboardInterrupt:
+        print("Programa interrumpido por el usuario")
