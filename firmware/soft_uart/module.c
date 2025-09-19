@@ -26,11 +26,11 @@ module_param(gpio_rx, int, 0);
 // Module prototypes.
 static int  soft_uart_open(struct tty_struct*, struct file*);
 static void soft_uart_close(struct tty_struct*, struct file*);
-static int  soft_uart_write(struct tty_struct*, const unsigned char*, int);
+static ssize_t soft_uart_write(struct tty_struct*, const u8*, size_t);
 static unsigned int soft_uart_write_room(struct tty_struct*);
 static void soft_uart_flush_buffer(struct tty_struct*);
 static unsigned int soft_uart_chars_in_buffer(struct tty_struct*);
-static void soft_uart_set_termios(struct tty_struct*, struct ktermios*);
+static void soft_uart_set_termios(struct tty_struct*, const struct ktermios*);
 static void soft_uart_stop(struct tty_struct*);
 static void soft_uart_start(struct tty_struct*);
 static void soft_uart_hangup(struct tty_struct*);
@@ -218,9 +218,9 @@ static void soft_uart_close(struct tty_struct* tty, struct file* file)
  * @param buffer_size number of bytes contained in the given buffer
  * @return number of bytes successfuly written into the TTY device
  */
-static int soft_uart_write(struct tty_struct* tty, const unsigned char* buffer, int buffer_size)
+static ssize_t soft_uart_write(struct tty_struct* tty, const u8* buffer, size_t buffer_size)
 {
-  return raspberry_soft_uart_send_string(buffer, buffer_size);
+  return raspberry_soft_uart_send_string(buffer, (int)buffer_size);
 }
 
 /**
@@ -256,7 +256,7 @@ static unsigned int soft_uart_chars_in_buffer(struct tty_struct* tty)
  * @param tty given TTY
  * @param termios parameters
  */
-static void soft_uart_set_termios(struct tty_struct* tty, struct ktermios* termios)
+static void soft_uart_set_termios(struct tty_struct* tty, const struct ktermios* termios)
 {
   int cflag = 0;
   speed_t baudrate = tty_get_baud_rate(tty);

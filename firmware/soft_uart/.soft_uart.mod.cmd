@@ -1,0 +1,1 @@
+savedcmd_/home/blindassist/repo/firmware/soft_uart/soft_uart.mod := printf '%s\n'   module.o raspberry_soft_uart.o queue.o | awk '!x[$$0]++ { print("/home/blindassist/repo/firmware/soft_uart/"$$0) }' > /home/blindassist/repo/firmware/soft_uart/soft_uart.mod
