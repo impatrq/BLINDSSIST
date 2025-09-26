@@ -13,7 +13,7 @@ pwm.start(30)
 
 def control_motor():
     while True:
-        d = distancias["uart1"]
+        d = distancias["uart2"]
         if d is not None:
             if d < 100:  
                 # Si la distancia es < 100 cm, aumenta velocidad (más duty cycle)
