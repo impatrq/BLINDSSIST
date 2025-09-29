@@ -1,25 +1,24 @@
-# -*- coding: utf-8 -*-
-import serial
-import time
+def getTFminiData(port, key_name):
+    ser = serial.Serial(port, 115200, timeout=1)
 
-ser = serial.Serial("/dev/serial0", 115200, timeout=1)
-
-def getTFminiData():
     while True:
-        if ser.in_waiting >= 9:
-            recv = ser.read(9)
-            if recv[0] == 0x59 and recv[1] == 0x59:  # cabecera válida
-                low = recv[2]
-                high = recv[3]
-                distance = low + (high << 8)
-                print("Distancia:", distance, "cm", flush=True)
-        time.sleep(0.01)  # evita 100% CPU
+        if ser.in_waiting > 0:
+            # Leer un byte a la vez hasta encontrar 0x59
+            first_byte = ser.read(1)
+            if first_byte == b'\x59':
+                second_byte = ser.read(1)
+                if second_byte == b'\x59':
+                    # Tenemos cabecera válida -> leemos los 7 bytes restantes
+                    frame = ser.read(7)
+                    if len(frame) == 7:
+                        low = frame[0]
+                        high = frame[1]
+                        distance = low + (high << 8)
 
-if __name__ == '__main__':
-    try:
-        if not ser.is_open:
-            ser.open()
-        getTFminiData()
-    except KeyboardInterrupt:
-        if ser:
-            ser.close()
+                        # Opcional: calcular checksum para validar
+                        checksum = (0x59 + 0x59 + sum(frame[:-1])) & 0xFF
+                        if checksum == frame[-1]:
+                            distancias[key_name] = distance
+                        else:
+                            print(f"[{key_name}] Checksum inválido, descartando trama")
+        time.sleep(0.005)  # bajar carga de CPU

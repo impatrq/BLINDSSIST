@@ -11,19 +11,31 @@ distancias = {
 
 def getTFminiData(port, key_name):
     ser = serial.Serial(port, 115200, timeout=1)
-    
-    while True:
-        if ser.in_waiting > 8:
-            recv = ser.read(9)
-            if recv[0] == 0x59 and recv[1] == 0x59:  # cabecera válida
-                low = recv[2]
-                high = recv[3]
-                distance = low + (high << 8)
-                # Guardamos el valor en el diccionario global
-                distancias[key_name] = distance
-        time.sleep(0.01)  # evita 100% CPU
 
-# Funciones separadas para cada UART (manteniendo formato)
+    while True:
+        if ser.in_waiting > 0:
+            # Buscar cabecera 0x59 0x59
+            first_byte = ser.read(1)
+            if first_byte == b'\x59':
+                second_byte = ser.read(1)
+                if second_byte == b'\x59':
+                    # Leer los 7 bytes restantes
+                    frame = ser.read(7)
+                    if len(frame) == 7:
+                        low = frame[0]
+                        high = frame[1]
+                        distance = low + (high << 8)
+
+                        # Calcular checksum
+                        checksum = (0x59 + 0x59 + sum(frame[:-1])) & 0xFF
+                        if checksum == frame[-1]:
+                            distancias[key_name] = distance
+                        else:
+                            print(f"[{key_name}] Checksum inválido, descartando trama")
+
+        time.sleep(0.005)  # Evita uso excesivo de CPU
+
+# Funciones separadas para cada UART
 def getTFminiData_uart1():
     getTFminiData("/dev/ttyUSB0", "uart1")
 
@@ -35,7 +47,7 @@ def getTFminiData_uart3():
 
 if __name__ == '__main__':
     try:
-        # Crear un hilo por cada lectura
+        # Crear hilos para cada sensor
         t1 = threading.Thread(target=getTFminiData_uart1, daemon=True)
         t2 = threading.Thread(target=getTFminiData_uart2, daemon=True)
         t3 = threading.Thread(target=getTFminiData_uart3, daemon=True)
@@ -45,7 +57,7 @@ if __name__ == '__main__':
         t2.start()
         t3.start()
 
-        # Bucle principal donde puedes usar los valores
+        # Bucle principal para imprimir distancias
         while True:
             print("UART1:", distancias["uart1"], "cm")
             print("UART2:", distancias["uart2"], "cm")
