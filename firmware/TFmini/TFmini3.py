@@ -43,7 +43,7 @@ def getTFminiData_uart2():
     getTFminiData("/dev/ttyUSB1", "uart2")
 
 def getTFminiData_uart3():
-    getTFminiData("/dev/Serial0", "uart3")
+    getTFminiData("/dev/ttyS0", "uart3")
 
 if __name__ == '__main__':
     try:
