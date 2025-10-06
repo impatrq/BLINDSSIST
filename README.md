@@ -2,9 +2,11 @@
 
 # BLINDASSIST
 
+(/docs/SocialNetwork/logo%20sin%20letras.jpg)
+
 ### Instagram: [@blindassist](https://www.instagram.com/blindassist/)
 
-### Pagina web: [https://castiilloramiro.github.io/BlindWeb/)
+### Pagina web: https://castiilloramiro.github.io/BlindWeb/
 
 ### Mail: blindassist2025@gmail.com
 
@@ -38,3 +40,4 @@ portable, compacto, difícil de perder u olvidar y no interrumpe en las acciones
 ### Quattrocchi Tiago
 
 - Mail: tiago4cchi@gmail.com
+
