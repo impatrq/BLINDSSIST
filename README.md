@@ -1,8 +1,8 @@
-<div align="center">
+ght<div align="center">
 
 # BLINDASSIST
 
-<img src="/docs/SocialNetwork/logo sin letras.jpg">
+<img src="/docs/SocialNetwork/logo sin letras.jpg" height=200 width=200>
 
 ### Instagram: [@blindassist](https://www.instagram.com/blindassist/)
 
@@ -40,6 +40,7 @@ portable, compacto, difícil de perder u olvidar y no interrumpe en las acciones
 ### Quattrocchi Tiago
 
 - Mail: tiago4cchi@gmail.com
+
 
 
 
