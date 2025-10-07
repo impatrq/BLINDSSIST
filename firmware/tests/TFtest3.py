@@ -37,7 +37,7 @@ def getTFminiData(port, key_name):
 
 # Funciones separadas para cada UART
 def getTFminiData_uart1():
-    getTFminiData("/dev/Serial0", "uart1")
+    getTFminiData("/dev/ttyS0", "uart1")
 
 def getTFminiData_uart2():
     getTFminiData("/dev/ttyUSB1", "uart2")
