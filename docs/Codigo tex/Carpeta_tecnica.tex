@@ -56,12 +56,15 @@
 
 \begin{document}
 
-\newgeometry{top=0cm,bottom=0cm,left=0cm,right=0cm}
+\begingroup
 \thispagestyle{empty}
-\begin{figure}[H]
-\includegraphics[width=\paperwidth,height=\paperheight]{Carpeta tecnica/Imagen1.jpg}
-\end{figure}
-\restoregeometry
+\newgeometry{top=0cm,bottom=0cm,left=0cm,right=0cm}
+
+\vspace*{-1.17in}
+\noindent\hspace*{-1.02in}
+\noindent\includegraphics[width=\paperwidth,height=\paperheight]{Carpeta tecnica/Imagen1.jpg}
+\endgroup
+\clearpage
 
 
 % Índice con numeración desde aquí
@@ -86,7 +89,7 @@
 \begin{center}
 Castillo Ramiro\\
 DNI: 47516171\\
-7°2 Avionica
+7°2 Aviónica
 \end{center}
 
 \begin{figure}[H]
@@ -97,7 +100,7 @@ DNI: 47516171\\
 
 Pino Octavio\\
 DNI: 47882634\\
-7°2 Avionica
+7°2 Aviónica
 \end{center}
 
 \begin{figure}[H]
@@ -108,7 +111,7 @@ DNI: 47882634\\
 \begin{center}
 Quattrocchi Tiago\\
 DNI: 47510542\\
-7°2 Avionica
+7°2 Aviónica
 \end{center}
 
 \begin{figure}[H]
@@ -154,19 +157,44 @@ Maximo de 8 horas de trabajo (200 horas de trabajo en todo el año)
     \item Proteus 8
     \item AutoCad
     \item UltiMaker
-    \item Benewake Softwarez
+    \item Benewake Software
 \end{itemize}
 
 \section{Descripción}
 
 \subsection{Objetivo}
-El objetivo de este proyecto es mantener la integridad de las personas ciegas o con algún tipo de discapacidad visual en cualquier tipo de entorno urbano y darles un mayor nivel de conciencia en entornos mas cerrados. Para ello, desarrollamos un dispositivo que mediante reconocimiento por inteligencia artificial y la detección de objetos utilizando tecnología láser permite avisan al usuario sobre un obstáculo en frente, por encima de la cadera, la presencia de alguna persona persona en un espacio cerrado y la cantidad de personas que se encuentran en el mismo espacio, contando con alertas sonoras y vibratorias que no alteren su percepción y condición actual.Este dispositivo funcionara como una ayuda al bastón que utilizan en su día a día sin modificar su efectividad o tratar de reemplazar su función.
+El objetivo de este proyecto es mantener la integridad de las personas ciegas o con algún tipo de discapacidad visual en cualquier tipo de entorno urbano y darles un mayor nivel de conciencia en entornos mas cerrados. Para ello, desarrollamos un dispositivo que mediante reconocimiento por inteligencia artificial y la detección de objetos utilizando tecnología láser para avisar al usuario sobre un obstáculo en frente, por encima de la cadera, la presencia de alguna persona en un espacio cerrado y la cantidad de individuos que se encuentran en el mismo espacio, contando con alertas sonoras y vibratorias que no alteren su percepción y condición actual.Este dispositivo funcionara como una ayuda al bastón que utilizan en su día a día sin modificar su efectividad o tratar de reemplazar su función.
 
 \subsection{Alcance}
 \begin{itemize}
 
-\item Cómo objetivo final, querríamos que este este proyecto llegue a ser un prototipo funcional y autónomo, con el menor tamaño posible para la comodidad del usuario. Contar con una IA correctamente entrenada y optimizada en rendimiento, que trabaje en conjunto al rango de posibilidades generado y sensado por los láseres. Teniendo en cuenta los casos posibles, buscamos que las alertas sensoriales sean claras para el usuario así tiene una experiencia placentera en su día a día.
+\item Cómo objetivo final, querríamos que este este proyecto llegue a ser un prototipo funcional y autónomo, con el menor tamaño posible para la comodidad del usuario. Contar con una IA correctamente entrenada y optimizada en rendimiento, que trabaje en conjunto al área cubierta y sensada por los lasers. Teniendo en cuenta las posibilidades, buscamos que las alertas sensoriales sean claras para el usuario así tiene una experiencia placentera en su día a día.
 \end{itemize}
+
+\subsection{Temática}
+
+ \begin{itemize}
+ \item Inclusión social: Nuestro proyecto abarca los parámetros presentados en la temática de inclusión social. Esto debido a que el proyecto mismo busca ayudar con el tránsito de las personas con discapacidad tanto en la vía pública cómo lugares cerrados desconocidos. Además, también puede ayudar con su comunicación y vida social, ya que los alerta de las personas que tienen a su alrededor. 
+ \end{itemize}
+ 
+\subsection{Problemas a resolver}
+
+\begin{itemize}
+\item Obstáculos repentinos en la vía publica, pueden presentar dificultad a la hora de detectar postes, árboles y otros peligros inesperados que se encuentren por encima de su tren inferior (a partir de la cadera), siendo que la mayoría de las veces el rango que cubre el bastón no es suficiente para detectar y avisar efectivamente a la persona con discapacidad visual.
+\item El riesgo constante que sufren en la vía publica termina llevando a que dependan mucho de terceros, como puede ser transeúntes que los apoyen o en casos de personas con una edad mas avanzada, un cuidador designado o familiar cercano. Tenemos en cuenta la falta de autonomía que genera esta problemática, la dependencia que terminan teniendo de terceros es una de las problemáticas más importantes a resolver y la idea es darles una herramienta de autonomía e integración.
+\item Proteger su intimidad pudiendo detectar personas que están en el mismo espacio cerrado sin depender de que la persona avise de su llegada, también permitiéndoles conocer la ubicación de dichos individuos, dándole un mejor sentido y conciencia situacional.
+\end{itemize}
+
+\subsection{Público beneficiado}
+El proyecto está destinado a personas con impedimentos visuales. En el mundo hay 2200 millones de personas con visibilidad reducida, 43,3 millones son no videntes. Esta es la demográfica que será beneficiada directamente por el proyecto, habilitando el tránsito por la vía pública de manera más segura y sin problemas que puedan llegar a afectar su integridad o la rehabilitación a la que están sometidos. Además, al ser un accesorio portable, compacto y difícil de perder u olvidar, no interrumpe en las acciones que pueda realizar el usuario en su vida cotidiana. Este proyecto también beneficiará indirectamente a instituciones privadas como seguros de salud y ART (Aseguradoras de Riesgo del Trabajo), ya que estos pueden ofrecerle como una ayuda al grupo de personas antes descritas. También aplica para la vida cotidiana o la vida pública, ya que se reduce el riesgo de accidentes y la carga que supone a los familiares a la hora de ayudarlo.
+
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{Carpeta tecnica/graf1.png}
+    \caption{Tabla de población ciega por continentes.}
+\end{figure}
 
 \subsection{Impacto}
  \begin{itemize}
@@ -176,39 +204,21 @@ El objetivo de este proyecto es mantener la integridad de las personas ciegas o 
      
  \end{itemize}
 
-\subsection{Problemas a resolver}
-
-\begin{itemize}
-\item Obstáculos repentinos en la vía publica, pueden presentar dificultad a la hora de detectar postes, árboles, postes y otros peligros inesperados que se encuentren por encima de su linea de la cadera, siendo que la mayoría de las veces el rango que cubre el bastón no es suficiente para detectar y avisar efectivamente a la persona con discapacidad visual.
-\item El riesgo constante que sufren en la vía publicas termina llevando a que dependan mucho de terceros, como puede ser transeúntes que los apoyen o en casos de personas con una edad mas avanzada, un cuidador designado o familizar cercano. Tenemos en cuenta la falta de autonomía que genera esta problemática, la dependencia que terminan teniendo terceros es una de las problemáticas más importantes a resolver y la idea es darles una herramienta de autonomía e integración.
-\item Proteger su intimidad pudiendo detectar personas que están en el mismo espacio cerrado sin tener que depender que la persona avise de su llegada, y ademas darles un mejor sentido y conciencia sobre el espacio en el que se encuentra. 
-\end{itemize}
-
-\subsection{Público beneficiado}
-El proyecto está destinado a personas con impedimentos visuales. En el mundo hay 2200 millones de personas con visibilidad reducida, 43,3 millones son no videntes. Esta es la demográfica que será beneficiada directamente por el proyecto, habilitando el tránsito por la vía pública de manera más segura y sin problemas que puedan llegar a afectar su integridad o la rehabilitación a la que están sometidos. Además, al ser un accesorio portable, compacto, difícil de perder u olvidar y puede servir para guardar bienes no interrumpe en las acciones que pueda realizar el usuario en su vida cotidiana. Este proyecto también beneficiará indirectamente a instituciones privadas como seguros de salud y ART (Aseguradoras de Riesgo del Trabajo), ya que estos pueden ofrecerle como una ayuda al grupo de personas antes descritas. También aplica para la vida cotidiana o la vida pública, ya que se reduce el riesgo de accidentes y la carga que supone a los familiares a la hora de ayudarlo.
-
-\subsection{Ámbito de Incumbencia.}
-
-\begin{itemize}
-    \item 
-\end{itemize}
-
 \subsection{Descripción General}
 
 \begin{itemize}
 
-    \item BlindAssist es un proyecto que busca facilitar el tránsito de sus usuarios en la vida cotidiana. A través de un dispositivo colgante que puedan llevar en sí mismos o en algún accesorio que mejore su movilidad. Esto lo lograríamos con un conjunto de componentes que trabajan en coordinación. Primero una cámara que detecta elementos específicos, por poner un ejemplo: cestos de basura, señalizaciones, etc. Segundo, unos sensores láser que detectan la proximidad de obstáculos cómo ramas u postes. Cómo tercero, alertas sensoriales a través de audio y vibraciones para alertar al usuario y que este pueda evitar estos inconvenientes. 
+    \item BlindAssist es un proyecto que busca facilitar el tránsito de sus usuarios en la vida cotidiana. A través de un dispositivo colgante que puedan llevar encima mismos o en algún accesorio que mejore su movilidad. Esto lo lograríamos con un conjunto de componentes que trabajan en coordinación. Primero una cámara que detecta elementos específicos, por poner un ejemplo: cestos de basura, señalizaciones, etc. Segundo, unos sensores láser que detectan la proximidad de obstáculos cómo ramas u postes. Cómo tercero, alertas sensoriales a través de audio y vibraciones para alertar al usuario y que este pueda evitar estos inconvenientes.
     
 \end{itemize}
 
 \subsection{Funcionalidades}
 \begin{itemize}
-    \item 
-\end{itemize}
-
-\subsection{Beneficios}
-\begin{itemize}
-    \item 
+    \item El dispositivo presenta dos etapas de detección y dos de alerta al usuario. 
+    El dispositivo realizará mediciones de distancia mediante los sensores TFmini LIDAR, estos se encuentran dispuestos de tal forma que puedan cubrir varios ángulos en frente de la persona. Acorde a la detección de los sensores, se le comunica al usuario la posición de un objeto intruso en el rango frontal, dependiendo que sensores detectan un objeto a menor distancia que 120cm se realizara un control de potencia de los motores internos, hay dos motores de vibración, uno a la izquierda y derecha del dispositivo, cada uno acorde a los sensores LIDAR de ambos lados, Cuando se detecta algo en el tercer TFmini cambia la organización, ambos motores emitirán la misma potencia, en caso de que el motor frontal y lateral detecten algo dicho lado tendrá un control titilante de la vibración, en caso de que los tres sensores se activen, ambos motores vibran al máximo de potencia.\\
+    El sistema de detección basado en Inteligencia Artificial (IA), utiliza la cámara para capturar imágenes continuamente. Un modelo de IA avanzado (YOLOv8) actúa como el cerebro, escaneando cada imagen a alta velocidad para identificar y clasificar objetos relevantes para la seguridad, como personas, autos, bicicletas, camiones y objetos de tropiezo (botellas, etc.). Solo se anuncia un objeto si la IA está lo suficientemente segura de su clasificación (más del 60\% de confianza).
+    La comunicación se realiza mediante voz asíncrona. Esta es la clave de la velocidad: el mensaje de voz (``Una persona", "3 autos", "Moto fuera") se envía a un proceso en segundo plano, permitiendo que la cámara y la IA sigan escaneando el entorno sin detenerse ni un instante. Para evitar el ruido constante, un filtro de tiempo de espera (cooldown) asegura que solo se anuncien los cambios de estado (algo nuevo apareció, se fue o cambió de cantidad) y no se repita la misma alerta cada pocos segundos.
+    
 \end{itemize}
 
 \separador
@@ -364,6 +374,7 @@ Tipo de sensor & OmniVision OV5647 Color CMOS QSXGA (5 megapíxeles). \\ \hline
 Tamaño del sensor & 3,67 x 2,74 mm. \\ \hline
 Contenido de píxeles & 2592 x 1944 píxeles. \\ \hline
 Tamaño de píxel & 1,4 x 1,4 µm. \\ \hline
+Tamaño de la placa & 25 x 24 mm (sin cable flexible). \\ \hline
 \end{tabular}
 \caption{Tabla de especificaciones técnicas}
 \end{table}
@@ -404,15 +415,6 @@ Vídeo HD & 720p a 60 fps. \\ \hline
 Vídeo VGA & Hasta 90 fps. \\ \hline
 \end{tabular}
 \caption{Tabla de rendimiento de video}
-\end{table}
-
-\begin{table}[H]
-\begin{tabular}{|p{4cm}|p{11cm}|}
-\hline
-\textbf{Parámetro} & \textbf{Descripción} \\ \hline
-Tamaño de la placa & 25 x 24 mm (sin cable flexible). \\ \hline
-\end{tabular}
-\caption{Tabla de dimensiones}
 \end{table}
 
 \subsection{TFmini}
@@ -624,7 +626,7 @@ El XL4015 regula la salida usando PWM de alta frecuencia y los siguientes compon
 
 \item R3 y C6: compensación y estabilidad del lazo de control.
 
-\item Potenciómetro (si lo hay en el diseño real, aquí parece ser R2): ajusta la tensión de salida.
+\item Potenciómetro: ajusta la tensión de salida.
 
 \end{itemize}
 
@@ -658,7 +660,7 @@ El divisor resistivo (R1, R2) mide la tensión de salida. Esta señal se compara
 
 \item Inductor: 47 µH, soporta varios amperios.
 
-\item Resistencias: R1 (0,05 Ω) detecta corriente, R2 ajusta Vout.
+\item Resistencias: R1 (0,05 $\Omega$ detecta corriente, R2 ajusta Vout.
 
 \item Capacitores:
 
@@ -673,13 +675,17 @@ El divisor resistivo (R1, R2) mide la tensión de salida. Esta señal se compara
 \end{itemize}
 
 \subsection{Baterías}
-
-Las baterías Li-Ion cilíndricas tipo 18650 de 3.7 V y 7800 mAh son acumuladores recargables de alta capacidad, diseñados para aplicaciones que requieren energía confiable, autonomía prolongada y recarga eficiente. Su formato estandarizado las hace ampliamente compatibles con dispositivos electrónicos de consumo y proyectos de ingeniería.
+Las baterías Li-Ion cilíndricas tipo 18650 de 3.7 V y 7800 mAh son acumuladores
+recargables de alta capacidad, diseñados para aplicaciones que requieren energía confiable,
+autonomía prolongada y recarga eficiente. Su formato estandarizado las hace ampliamente
+compatibles con dispositivos electrónicos de consumo y proyectos de ingeniería.
+Figura 3.14: Baterías de litio
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=0.3\linewidth]{Carpeta tecnica/Imagen5.png}
-\caption{Baterias de litio}
+    \centering
+    \includegraphics[width=0.5\linewidth]{Carpeta tecnica/Imagen5.png}
+    \caption{Baterías recargables}
+    \label{fig:placeholder}
 \end{figure}
 
 \subsubsection{Características Técnicas}
@@ -749,7 +755,7 @@ Alimentación de baterias (J9, J10) & 2 & Alimentacion de la Raspberry Pi 4 y de
 
 \begin{figure}[H]
     \centering
-\includegraphics[width=0.8\linewidth]{Carpeta tecnica/Captura de pantalla (1).png}
+\includegraphics[width=\linewidth]{Carpeta tecnica/Captura de pantalla (1).png}
 \caption{Esquematico del circuito final}
 \end{figure}
 
@@ -758,7 +764,7 @@ Alimentación de baterias (J9, J10) & 2 & Alimentacion de la Raspberry Pi 4 y de
 
 \begin{figure}[H]
     \centering
-\includegraphics[width=0.8\linewidth]{Carpeta tecnica/Captura de pantalla (2).png}
+\includegraphics[width=\linewidth]{Carpeta tecnica/nuevo PCB.jpg}
 \caption{diseño de impresion del circuito}
 \end{figure}
 
@@ -769,6 +775,12 @@ Alimentación de baterias (J9, J10) & 2 & Alimentacion de la Raspberry Pi 4 y de
 
 \subsection{Detección por IA}
 El sistema de visión artificial implementado en este proyecto se basa en el modelo de aprendizaje profundo YOLOv8n.pt para la identificación de objetos en tiempo real, utilizando la cámara de la Raspberry Pi como fuente de datos. La arquitectura del software se estructura en un sistema de Programación Orientada a Objetos (POO). Cada componente lógico (cámara, IA, voz, traductor) está encapsulado en una clase dedicada, lo que facilita el desarrollo, las pruebas y el mantenimiento del sistema de manera modular.
+
+\begin{figure}[H]
+\noindent\hspace*{-0.7in}% desplaza hacia la izquierda el origen
+\includegraphics[width=1.2\linewidth]{Carpeta tecnica/diagramaflujoia1.jpg}
+\caption{Diagrama de flujo de la deteccion por IA}
+\end{figure}
 
 \subsubsection{logica del bucle continuo}
 \begin{itemize}
@@ -814,12 +826,6 @@ El flujo de información y la lógica de control se manejan principalmente en el
 \item \textbf{Reproducción de Audio:} Si hay cambios, la clase Voz es invocada a través de self.\_\_voz.hablar(final\_message).
 \end{itemize}
 La arquitectura del sistema es muy escalable. Al estar modularizado, se podrían añadir fácilmente nuevas clases sin modificar la lógica central del proyecto.
-
-\begin{figure}[H]
-\noindent\hspace*{-0.7in}% desplaza hacia la izquierda el origen
-\includegraphics[width=1.2\linewidth]{Carpeta tecnica/diagramaflujoia1.jpg}
-\caption{Diagrama de flujo de la deteccion por IA}
-\end{figure}
 
 \subsection{Detección por láser}
 \subsubsection{Libreria TFmini}
@@ -896,76 +902,131 @@ Creación de hilos: Cada hilo ejecuta una de las funciones específicas (uart1, 
 \caption{Diagrama de flujo de la lectura de distancias}
 \end{figure}
 
-\subsubsection{Control de PWM}
-Este programa implementa un sistema de control de motores mediante señales PWM (Pulse Width Modulation), en base a las lecturas de distancia obtenidas de tres sensores LiDAR TFmini conectados por UART.
+\subsubsection{Control de Motores}
 
-El sistema permite:
-\begin{itemize}
-\item Captura simultánea de las distancias desde tres sensores, un control dinámico del ciclo de trabajo (duty cycle) de dos salidas PWM en la Raspberry Pi 4, estrategias de control diferenciadas para cada sensor y la ejecución en paralelo mediante hilos de adquisición y control.
-\end{itemize}
-Este diseño es útil para aplicaciones de robótica móvil, sistemas de asistencia o control adaptativo, donde las distancias detectadas influyen directamente en la potencia de motores o actuadores.
+El código implementa un sistema de control de dos motores mediante modulación por ancho de pulso (PWM) utilizando una Raspberry Pi 4.  
+El control se basa en las distancias medidas por tres sensores LiDAR TFmini conectados a los puertos UART de la Raspberry Pi.  
+El objetivo del programa es variar la velocidad de los motores en función de la proximidad de obstáculos, generando alertas hapticas (mediante vibraciones) cuando se detectan objetos a menos de 120 cm.
 
-\paragraph{Descripción General del Sistema}
-La lógica del sistema se organiza en tres niveles funcionales:
-\begin{itemize}
-\item \textbf{Adquisición de datos:} Módulo de lectura UART importado desde TFmini3.py, que actualiza un diccionario global de distancias.
-\item \textbf{Control de motores por PWM:} Tres funciones que adaptan la señal PWM en función de las distancias medidas.
-\item \textbf{Gestión de hilos y ciclo principal:} Lanzamiento en paralelo de procesos de lectura y control, garantizando funcionamiento continuo y autónomo.
-\end{itemize}
-El hardware utilizado es la Raspberry Pi 4, con soporte nativo de PWM en los pines GPIO18 y GPIO13.
 
-\paragraph{Librerías Utilizadas}
+\paragraph{Librerías y Dependencias}
+
 \begin{itemize}
-\item \textbf{time:} Gestión de retardos y temporizaciones.
-\item \textbf{threading:} Permite ejecutar múltiples tareas de forma concurrente (lectura + control).
-\item \textbf{RPi.GPIO:} Biblioteca oficial para controlar pines GPIO de Raspberry Pi, incluyendo PWM.
-\item \textbf{TFmini3 (módulo propio):}
-\begin{itemize}
-\item distancias: diccionario global con los valores de los tres sensores.
-\item getTFminiData\_uart1, getTFminiData\_uart2, getTFminiData\_uart3: funciones de lectura UART en hilos independientes.
-\end{itemize}
+    \item \texttt{time}: Control de tiempos y retardos.
+    \item \texttt{threading}: Permite ejecutar lecturas de los tres sensores en paralelo mediante hilos.
+    \item \texttt{RPi.GPIO}: Control de los pines GPIO de la Raspberry Pi.
+    \item \texttt{TFtest3}: Módulo externo que contiene las funciones de lectura \texttt{getTFminiData\_uart1/2/3} y el diccionario \texttt{distancias}.
 \end{itemize}
 
-\paragraph{Configuración de Pines y PWM}
-\begin{verbatim}
-MOTOR_PIN1 = 18 # PWM 1
-MOTOR_PIN2 = 13 # PWM 2
-\end{verbatim}
-GPIO18 y GPIO13 son pines con soporte PWM por hardware en Raspberry Pi 4.
+\paragraph{Configuración del Sistema}
+
+\begin{itemize}
+    \item\textbf{Modo GPIO:}
+
 \begin{verbatim}
 GPIO.setmode(GPIO.BCM)
-GPIO.setup(MOTOR_PIN1, GPIO.OUT)
-GPIO.setup(MOTOR_PIN2, GPIO.OUT)
 \end{verbatim}
-Se configura el modo BCM (numeración lógica de pines). Ambos pines se inicializan como salidas digitales.
+
+\item\textbf{Asignación de Pines PWM:}
+\begin{verbatim}
+MOTOR_PIN1 = 18
+MOTOR_PIN2 = 13
+\end{verbatim}
+
+Estos pines son compatibles con PWM por hardware en la Raspberry Pi 4.
+
+\item\textbf{Inicialización de PWM:}
 \begin{verbatim}
 pwm1 = GPIO.PWM(MOTOR_PIN1, 100)
 pwm2 = GPIO.PWM(MOTOR_PIN2, 100)
+pwm1.start(0)
+pwm2.start(0)
 \end{verbatim}
-\begin{verbatim}
-pwm1.start(30)
-pwm2.start(30)
-\end{verbatim}
-Frecuencia de PWM: 100 Hz. Duty cycle inicial: 30\% → corresponde a potencia media en motores.
 
-\paragraph{Control de motores}
-\begin{itemize}
-\item \textbf{Motor 1:} Controla el motor conectado al GPIO18 (PWM1) según el valor de UART1. Si la distancia < 100 cm, el duty cycle aumenta proporcionalmente: duty = 30 + (100 - d) limitado a 100\%. Si la distancia $\geq$ 100 cm, mantiene duty en 30\%. Mensaje en consola con valores de distancia y duty aplicado. Refresca cada 0.1 s. Función: Aumentar la velocidad del motor al detectar un obstáculo cercano en UART1.
-\item \textbf{Motor 2:} Controla el motor conectado al GPIO13 (PWM2) según el valor de UART2. Mismo esquema de control que UART1, pero aplicado al segundo canal PWM. Distancia menor a 100 cm → incremento proporcional del duty. Distancia mayor a 100 cm → duty constante en 30\%. Refresca cada 0.1 s. Función: Motor secundario regulado por la distancia detectada en UART2.
-\item \textbf{Motor 3:} Controla de manera intercalada ambos motores en función de UART3. Si la distancia < 100 cm: PWM alterna entre GPIO18 y GPIO13 cada 0.3 s. Uno de los motores se activa con 80\% duty mientras el otro se apaga. Si la distancia $\geq$ 100 cm: Ambos motores se mantienen en 30\% duty. Función: Generar un patrón de parpadeo/intermitencia entre los dos motores ante detección de obstáculos cercanos por UART3.
+Se inicializan ambas salidas con una frecuencia de \textbf{100 Hz} y un duty cicle del \textbf{0 \%}.
 \end{itemize}
 
-\paragraph{Gestión de Hilos y Ejecución Principal}
+\paragraph{Función Auxiliar}
+\begin{itemize}
+\texttt{calcular\_duty(d):} Esta función traduce la distancia medida (en cm) al porcentaje de ciclo útil del PWM.  
+Si el objeto está a menos de \textbf{120 cm}, el duty cycle aumenta proporcionalmente al acercamiento.
+
 \begin{verbatim}
-if __name__ == "__main__":
-...
+if d < 120:
+    return min(100, 120 - d)
 \end{verbatim}
-Proceso de ejecución: Hilos de lectura UART t1, t2, t3 ejecutan en paralelo las funciones getTFminiData\_uart1/2/3. Permiten actualización continua del diccionario distancias. Hilos de control PWM: c1, c2, c3 ejecutan en paralelo las funciones control\_motor\_uart1/2/3. Cada hilo ajusta el duty cycle de manera independiente según la lógica descrita. Bucle principal: Programa se mantiene activo con un while True y time.sleep(1). Los hilos daemon garantizan que los procesos se cierren al terminar. Gestion de interrupción y limpieza: KeyboardInterrupt: permite salir con Ctrl + C. finally: se detienen los PWM (pwm1.stop(), pwm2.stop()) y se libera la configuración GPIO (GPIO.cleanup()).
+
+Ejemplo de funcionamiento:
+\begin{itemize}
+    \item Si $d = 100$ cm $\rightarrow$ $duty = 20\%$
+    \item Si $d = 50$ cm $\rightarrow$ $duty = 70\%$
+\end{itemize}
+\end{itemize}
+
+\paragraph{Lógica de Control Principal}
+\begin{itemize}
+
+Función central que coordina la lectura de los tres sensores y actualiza los dos motores según las condiciones detectadas.
+
+\textbf{Ciclo de operación:}
+
+\begin{enumerate}
+    \item Reinicia el PWM en 0\% al comienzo de cada ciclo.  
+    \item Lee las distancias \texttt{d1}(Sensor derecho), \texttt{d2}(Sensor izquierdo), \texttt{d3}(Sensor frontal) desde el diccionario compartido \texttt{distancias}.  
+    \item Calcula los valores de duty correspondientes.  
+    \item Evalúa las condiciones de proximidad menores a 120 cm.  
+\end{enumerate}
+
+\textbf{Casos contemplados:}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|p{5cm}|p{7cm}|}
+\hline
+\textbf{Caso} & \textbf{Condición} & \textbf{Acción} \\ \hline
+1 & d1 $<$ 120 & Activa PWM0 proporcionalmente. \\ \hline
+2 & d2 $<$ 120 & Activa PWM1 proporcionalmente. \\ \hline
+3 & d3 $<$ 120 & Ambos motores actúan con el mismo PWM. \\ \hline
+4 & d2 y d3 $<$ 120 & Motor 2 titila alternadamente. \\ \hline
+5 & d1 y d3 $<$ 120 & Motor 1 titila alternadamente. \\ \hline
+6 & d1, d2 y d3 $<$ 120 & Ambos motores al 100\% (alerta crítica). \\ \hline
+\end{tabular}
+\caption{Casos de control de motores según distancias detectadas.}
+\end{table}
+\end{itemize}
+
+\paragraph{Ejecución Principal}
+
+\begin{itemize}
+El bloque \texttt{if \_\_name\_\_ == "\_\_main\_\_":} inicia la ejecución del programa.
+
+Se crean tres hilos dedicados a la lectura continua de los sensores TFmini:
+
+\begin{verbatim}
+t1 = threading.Thread(target=getTFminiData_uart1, daemon=True)
+\end{verbatim}
+
+Un cuarto hilo ejecuta la función \texttt{control\_sensores()} para el control de los motores.  
+El bucle principal mantiene el programa activo indefinidamente mientras los hilos trabajan en segundo plano.
+\end{itemize}
+
+\paragraph{Finalización Segura}
+\begin{itemize}
+En caso de interrupción manual (Ctrl + C), el programa detiene los PWM y limpia la configuración de los GPIO:
+
+\begin{verbatim}
+pwm1.stop()
+pwm2.stop()
+GPIO.cleanup()
+\end{verbatim}
+
+Esto evita errores en ejecuciones posteriores.
+\end{itemize}
 
 \begin{figure}[H]
-\noindent\hspace*{-0.7in}% desplaza hacia la izquierda el origen
-\includegraphics[width=1.2\linewidth,height=1.1\linewidth]{Carpeta tecnica/diagrama de flujo PWM.png}
-\caption{Diagrama de flujo de la logica del funcionamiento de los motores}
+    \centering
+    \includegraphics[width=\linewidth]{Carpeta tecnica/diagrama PWM.png}
+    \caption{Diagrama de flujo e la logica PWM}
 \end{figure}
 
 \subsubsection{Código Final del Control Principal (control\_principal.py)}
@@ -973,7 +1034,11 @@ Proceso de ejecución: Hilos de lectura UART t1, t2, t3 ejecutan en paralelo las
 La función principal de este script es coordinar todos los módulos de hardware y software: cámara, sensores LiDAR, motores de vibración y el sistema de voz. Gracias a esta integración, el dispositivo puede ofrecer detección de objetos y advertencia de obstáculos de manera simultánea y en tiempo real.
 
 \paragraph{Importación de Librerías y Configuración}
+
+\begin{itemize}
 Al inicio, el código importa distintas librerías necesarias para manejar el hardware y los módulos de inteligencia artificial:
+\end{itemize}
+
 
 \begin{verbatim}
 import RPi.GPIO as GPIO
@@ -986,7 +1051,11 @@ from ultralytics import YOLO
 En términos generales, estas librerías permiten conectar la Raspberry Pi con el entorno físico (botones, motores, cámara), al mismo tiempo que se integra el modelo de IA encargado de reconocer objetos.
 
 \paragraph{Gestión de Pines y Estados Globales}
+\begin{itemize}
+
 El sistema trabaja con botones y motores conectados a pines GPIO de la Raspberry Pi. Estos pines permiten encender o apagar funciones al pulsar un botón y regular la intensidad de vibración de los motores mediante señales PWM.
+
+\end{itemize}
 
 \begin{verbatim}
 PIN_DETECCION = 25   # Botón para activar la cámara
@@ -998,8 +1067,9 @@ MOTOR_PIN2 = 13
 De este modo, el usuario puede elegir si activa la detección de objetos o el aviso de obstáculos, cada uno ejecutado en hilos separados.
 
 \paragraph{Lógica Multihilo (Threads)}
-El programa aprovecha la librería threading para ejecutar varias tareas al mismo tiempo.  
+  
 \begin{itemize}
+El programa aprovecha la librería threading para ejecutar varias tareas al mismo tiempo.
     \item Al presionar el botón de detección, se inicia un hilo que activa la cámara y el modelo de IA. Este módulo captura imágenes, analiza lo que ve y notifica mediante voz qué objetos han aparecido o desaparecido en el entorno.
     \item Al presionar el botón de LiDAR, se inician varios hilos que leen la distancia desde los sensores y controlan los motores de vibración. Cuanto más cerca esté un obstáculo, más intensa es la vibración.
 \end{itemize}
@@ -1007,7 +1077,9 @@ El programa aprovecha la librería threading para ejecutar varias tareas al mism
 De esta forma, el usuario recibe información visual traducida tanto en mensajes de voz como en señales hápticas.
 
 \paragraph{Manejo de Eventos con GPIO}
+\begin{itemize}
 El sistema está preparado para reaccionar automáticamente cuando se presiona un botón. Esto se logra configurando los pines de entrada de la Raspberry Pi con interrupciones:
+\end{itemize}
 
 \begin{verbatim}
 GPIO.add_event_detect(PIN_DETECCION, GPIO.FALLING, 
@@ -1017,6 +1089,8 @@ GPIO.add_event_detect(PIN_DETECCION, GPIO.FALLING,
 La función \texttt{boton\_callback()} determina qué botón fue presionado y activa o desactiva el hilo correspondiente. Si un módulo ya estaba en ejecución, el mismo botón permite detenerlo.
 
 \paragraph{Función Principal (main)}
+
+
 El núcleo del programa es la función \texttt{main()}, que inicia el sistema, espera unos segundos para asegurar que todo el hardware esté listo, y finalmente queda a la espera de que el usuario presione algún botón:
 
 \begin{verbatim}
@@ -1032,10 +1106,15 @@ Esto asegura un arranque limpio y confiable.
 
 \paragraph{Procedimiento de Despliegue y Arranque Automático}
 
+\begin{itemize}
 Un aspecto fundamental del proyecto fue garantizar que el sistema se ejecute de forma automática al encender la Raspberry Pi. Para ello, se descartó el uso de \texttt{crontab}, que presentaba fallos al iniciar el entorno virtual de Python, y se optó por \texttt{systemd}, la herramienta moderna de Linux para gestionar servicios.
+\end{itemize}
 
 \paragraph{Archivo de Servicio: blindassist.service}
+
+\begin{itemize}
 El archivo \texttt{blindassist.service}, ubicado en \texttt{/etc/systemd/system/}, define cómo y cuándo debe ejecutarse el programa principal. Su contenido clave es:
+\end{itemize}
 
 \begin{verbatim}
 [Unit]
@@ -1084,14 +1163,29 @@ El diseño corresponde a un prototipo de carcasa destinado a integrar de forma e
 \item \textbf{Espacio interno:} El primer prototipo no contaba con el espacio suficiente para albergar todos los componentes electrónicos. En el segundo, se corrigieron dimensiones y proporciones, logrando una organización más adecuada del volumen interno.
 \item \textbf{Ranuras para sensores LIDAR:} En el primer modelo, las ranuras eran más genéricas y no contemplaban bien la orientación de los sensores. El segundo prototipo introdujo tres ranuras específicas para los LIDAR, con un frente inclinado que mejora el ángulo de detección.
 \item \textbf{Relieves y fijaciones internas:} El primer y segundo prototipo carecían de soporte interno para los componentes. En el tercer prototipo, que exteriormente mantiene la misma geometría, se añadieron relieves interiores para que los LIDAR queden bien posicionados y se incorporaron finalmente los anclajes para fijar las plaquetas electrónicas, permitiendo un montaje más firme y seguro.
-\item Sistema de cierre: Desde el segundo prototipo ya se contemplaban orejas externas para tornillería, pero en el prototipos siguiente se mejoró la definición de los encastres en el borde del cuerpo, logrando un cierre más sólido.
+\item \textbf{Sistema de cierre}: Desde el segundo prototipo ya se contemplaban orejas externas para tornillería, pero en el prototipos siguiente se mejoró la definición de los encastres en el borde del cuerpo, logrando un cierre más sólido.
+\item La serie de prototipos muestra una mejora constante en la funcionalidad y organización interna de la carcasa. El primer prototipo permitió validar dimensiones generales. El segundo resolvió la correcta orientación de los LIDAR con el frente inclinado y el aumento de espacio. El tercero introdujo finalmente los relieves interiores y fijaciones internas, mejorando la integración de los componentes. Este proceso iterativo confirma que el diseño está en el camino correcto, pero aún con margen para seguir perfeccionando aspectos de robustez estructural, ensamblaje y usabilidad.
 \end{itemize}
 
-\subsection{Conclusión}
-\begin{itemize}
-\item \textbf{ La serie de prototipos muestra una mejora constante en la funcionalidad y organización interna de la carcasa. El primer prototipo permitió validar dimensiones generales. El segundo resolvió la correcta orientación de los LIDAR con el frente inclinado y el aumento de espacio. El tercero introdujo finalmente los relieves interiores y fijaciones internas, mejorando la integración de los componentes. Este proceso iterativo confirma que el diseño está en el camino correcto, pero aún con margen para seguir perfeccionando aspectos de robustez estructural, ensamblaje y usabilidad.}
-\end{itemize}
+\subsection{Imágenes}
+\subsubsection{Primer Prototipo}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{Carpeta tecnica/modelo baj1.png}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{Carpeta tecnica/primer tapa.png}
+    \caption{Primera tapa}
+\end{figure}
 
+\subsubsection{Segundo Prototipo}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{Carpeta tecnica/segundo proto.png}
+    \caption{Tapa y base}
+\end{figure}
 \separador
 
 %--- Redes sociales ---
@@ -1219,7 +1313,7 @@ Raspberry Pi Foundation.
 
 \bibitem{tfmini_doc}
 Benewake. 
-\emph{TFmini LiDAR Product Manual:} \href{https://github.com/impatrq/BLINDSSIST/blob/main/Hardware/TFmini/SJ-PM-TFmini-T-01_A06%20Product%20Manual_EN.pdf}{https://github.com/impatrq/BLINDSSIST/SJ-PM-TFmini-T-01_A06}
+\emph{TFmini LiDAR Product Manual:} \href{https://github.com/impatrq/BLINDSSIST/blob/main/Hardware/TFmini/SJ-PM-TFmini-T-01_A06%20Product%20Manual_EN.pdf}{https://github.com/impatrq/BLINDSSIST/TFmini}
 
 \bibitem{TFminidatasheet}
 \emph{TFmini Lidar Datasheet:}
@@ -1243,11 +1337,28 @@ Benewake.
 \emph{Control de motores:}
 \href{https://github.com/impatrq/BLINDSSIST/blob/main/firmware/TFmini/ContPWM.py}{https://github.com/impatrq/BLINDSSIST/ContPWM.py}
 
-\subsection{Pagina web}
+\subsection{Redes sociales}
+\bibitem{Página web}
+\emph{Carpeta de Web BlindAssist}
+\href{https://github.com/impatrq/BLINDSSIST/tree/main/firmware/pagina%20web}{https://github.com/impatrq/BLINDSSIST/pagina}
+
+\bibitem{linktree}
+\emph{linktree de BlindAssist:}
+\href{https://linktr.ee/blindassist?fbclid=PAZXh0bgNhZW0CMTEAAaejZ-DVtX8PwclQCxtVIAFTMeQ2bF1__hJE3IXZvGlHDpwY1C9Xi3u7Qlj4Kg_aem_oKJ_WfNXSLX8A-x4wG293A}{https://linktr.ee/blindassist}
+
+\bibitem{pagweb}
+\emph{Pagina web de BlindAssist:}
+\href{https://castiilloramiro.github.io/BlindWeb/}{https://castiilloramiro.github.io/BlindWeb/}
+
+\bibitem{instagram}
+\emph{Instagram oficial de BlindAssist:}
+\href{https://www.instagram.com/blindassist/}{https://www.instagram.com/blindassist/}
 
 \subsection{Documentación}
 
-
+\bibitem{carpeta tecnica}
+\emph{Codigo en Tex de carpeta tecnica:}
+\href{https://github.com/impatrq/BLINDSSIST/tree/main/docs/Codigo%20tex}{https://github.com/impatrq/BLINDSSIST/Codigo\%20tex}
 
 \end{thebibliography}
 
