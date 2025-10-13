@@ -1,10 +1,10 @@
 import time
 import threading
 import RPi.GPIO as GPIO
-from TFtest3 import distancias, getTFminiData_uart1, getTFminiData_uart2, getTFminiData_uart3
+from TFmini3 import distancias, getTFminiData_uart1, getTFminiData_uart2, getTFminiData_uart3
 
 # Pines PWM (hardware soportados en RPi4: GPIO18 y GPIO13)
-MOTOR_PIN1 = 18   # PWM 1
+MOTOR_PIN1 = 12   # PWM 1
 MOTOR_PIN2 = 13   # PWM 2
 
 GPIO.setmode(GPIO.BCM)
