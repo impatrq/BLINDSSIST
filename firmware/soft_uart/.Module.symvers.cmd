@@ -1,1 +1,0 @@
-savedcmd_/home/blindassist/repo/firmware/soft_uart/Module.symvers :=  scripts/mod/modpost -M -m -a      -o /home/blindassist/repo/firmware/soft_uart/Module.symvers -T /home/blindassist/repo/firmware/soft_uart/modules.order -i Module.symvers -e 
