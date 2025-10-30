@@ -1,1 +1,0 @@
-savedcmd_/home/blindassist/repo/firmware/soft_uart/soft_uart.o := aarch64-linux-gnu-ld -EL  -maarch64elf -z noexecstack --no-warn-rwx-segments   -r -o /home/blindassist/repo/firmware/soft_uart/soft_uart.o @/home/blindassist/repo/firmware/soft_uart/soft_uart.mod 
