@@ -1,47 +1,35 @@
-<div align="center">
 
-# BLINDASSIST
+<h1 align="center"><u>BLINDASSIST</u></h1>
 
-<img src="/docs/SocialNetwork/logo sin letras.jpg" height=400 width=400>
-
-### Instagram: [@blindassist](https://www.instagram.com/blindassist/)
-
-### Pagina web: https://castiilloramiro.github.io/BlindWeb/
-
-### Mail: blindassist2025@gmail.com
-
-&nbsp;
-
-</div>
-
-## Descripción
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BlindAssist es un proyecto que busca facilitar el tránsito de sus usuarios no videntes en la vida cotidiana. A través de un dispositivo colgante que puedan llevar en sí mismos o en algún accesorio que mejore su movilidad, el cual serviria como una ayuda al baston que utilizan en su vida diaria. Esto lo lograríamos con un conjunto de componentes que trabajan en coordinación. Primero una cámara que detecta elementos específicos, por poner un ejemplo: cestos de basura, se˜nalizaciones, etc. Segundo, unos sensores láser que detectan la proximidad de obstáculos cómo ramas o postes. Cómo tercero, alertas sensoriales a través de audio y vibraciones para
-alertar al usuario y que este pueda evitar estos inconvenientes.<br>
-
-## A quien esta destinado
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;El proyecto está destinado a personas con impedimentos visuales. En el mundo hay 2200 millones de personas con visibilidad reducida, 43,3 millones son no videntes. Esta es la demográfica que será beneficiada directamente por el proyecto, habilitando el tránsito
-por la vía pública de manera más segura y sin problemas que puedan llegar a afectar
-su integridad o la rehabilitación a la que están sometidos. Además, al ser un accesorio
-portable, compacto, difícil de perder u olvidar y no interrumpe en las acciones que pueda realizar el usuario en su vida cotidiana. Este proyecto también beneficiaría indirectamente a instituciones privadas como seguros de salud y ART (Aseguradoras de Riesgo del Trabajo), ya que estos pueden ofrecerle como una ayuda al grupo de personas antes descritas. También aplica para la vida cotidiana o la vida pública, ya que se reduce el riesgo de accidentes y la carga que supone a los familiares a la hora de ayudarlo..<br>
-
-## Integrantes:
-<div align="center">
-
-</div>
-
-### Castillo Ramiro
-
-- Mail: castilloramiro06@gmail.com
-
-### Pino Octavio
-
-- Mail: octypino18@gmail.com
-
-### Quattrocchi Tiago
-
-- Mail: tiago4cchi@gmail.com
+<p align="center">
+  <img src="https://github.com/impatrq/BLINDSSIST/blob/main/firmware/pagina web/Multimedia/logos/Capa 0.png" alt="BLINDSSIST Logo" width="250">
+</p>
 
 
+---
 
+## 🎯 Descripción  
+BLINDSSIST es un proyecto orientado a facilitar el tránsito de usuarios con discapacidad visual en su vida cotidiana. A través de un dispositivo colgante —o integrado en algún accesorio— funciona como ayuda al bastón tradicional, ofreciendo:  
+- Detección por cámara de elementos específicos (por ejemplo: cestos de basura, señalizaciones, etc.).  
+- Sensores láser de proximidad para obstáculos (ramas, postes, etc.).  
+- Alertas sensoriales (audio + vibración) para que el usuario pueda evitar los obstáculos.  
 
+El dispositivo es portátil, compacto, fácil de llevar y diseñado para no interferir en las actividades diarias del usuario.
 
+---
+
+## 👥 Público objetivo  
+- Personas con discapacidad visual o movilidad reducida.  
+- Instituciones, aseguradoras o centros de rehabilitación que buscan tecnologías de apoyo.  
+- Familiares o cuidadores que desean aumentar la seguridad en el tránsito.  
+
+---
+
+## 🧑‍💻 Equipo  
+- **Castillo Ramiro** — castilloramiro06@gmail.com  
+- **Pino Octavio** — octypino18@gmail.com  
+- **Quattrocchi Tiago** — tiago4cchi@gmail.com  
+
+---
+
+## 📂 Estructura del repositorio  
