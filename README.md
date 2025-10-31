@@ -4,15 +4,6 @@
   <img src="https://github.com/impatrq/BLINDSSIST/blob/main/firmware/pagina web/Multimedia/logos/Capa 0.png" alt="BLINDSSIST Logo" width="250">
 </p>
 
-<p align="center">
-  <a href="https://github.com/impatrq/BLINDSSIST">
-    <img src="https://img.shields.io/badge/GitHub-BLINDSSIST-181717?logo=github&logoColor=white" alt="GitHub">
-  </a>
-  <img src="https://img.shields.io/github/languages/top/impatrq/BLINDSSIST?label=Top%20lang" alt="Top language">
-  <img src="https://img.shields.io/github/last-commit/impatrq/BLINDSSIST" alt="Last commit">
-</p>
-
----
 
 ## 🎯 Descripción  
 
@@ -63,7 +54,7 @@ BLINDSSIST/
 
 | Característica | Descripción |
 |----------------|-------------|
-| 🎥 **Visión por Computadora** | Detección automática de elementos del entorno |
+| 🎥 **Visión por IA** | Detección automática de elementos del entorno |
 | 📏 **Sensores de Proximidad** | Detección de obstáculos en tiempo real |
 | 🔊 **Feedback Auditivo** | Alertas de audio contextuales |
 | 📳 **Feedback Háptico** | Vibraciones para notificaciones táctiles |
@@ -77,7 +68,7 @@ BLINDSSIST/
 <a href="https://www.linkedin.com/in/ramiro-castillo-9a16b435b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank">
   <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn Castillo Ramiro">
 </a>
-<a href="mailto:castilloramiro06@gmail.com" target="_blank">
+<a href="mailto:castilloramiro06@gmail.com?subject=Contacto%20desde%20BLINDASSIST&body=Hola%20Ramiro,%0D%0A%0D%0A" target="_blank">
   <img src="https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Email Castillo Ramiro">
 </a>
 
@@ -89,20 +80,27 @@ BLINDSSIST/
 <a href="https://www.linkedin.com/in/octavio-pino-b596b635b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank">
   <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn Pino Octavio">
 </a>
-<a href="mailto:octypino18@gmail.com" target="_blank">
+<a href="mailto:octypino18@gmail.com?subject=Contacto%20desde%20BLINDASSIST&body=Hola%20Octavio,%0D%0A%0D%0A" target="_blank">
   <img src="https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Email Pino Octavio">
 </a>
+
+**Email:** octypino18@gmail.com
 
 ---
 
 ### **Quattrocchi Tiago**
-<a href="https://www.linkedin.com/in/REEMPLAZAR_QUATTROCCHI" target="_blank">
+<a href="https://www.linkedin.com/in/tiago-quattrocchi-9146b335b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank">
   <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn Quattrocchi Tiago">
 </a>
-<a href="mailto:tiago4cchi@gmail.com" target="_blank">
+<a href="mailto:tiago4cchi@gmail.com?subject=Contacto%20desde%20BLINDASSIST&body=Hola%20Tiago,%0D%0A%0D%0A" target="_blank">
   <img src="https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Email Quattrocchi Tiago">
 </a>
+
+**Email:** tiago4cchi@gmail.com
+
+---
 
 <p align="center">
   <b>Hecho con ❤️ para mejorar la accesibilidad</b>
 </p>
+
