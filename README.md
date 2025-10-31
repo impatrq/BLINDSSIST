@@ -4,6 +4,7 @@
   <img src="https://github.com/impatrq/BLINDSSIST/blob/main/firmware/pagina web/Multimedia/logos/Capa 0.png" alt="BLINDSSIST Logo" width="250">
 </p>
 
+---
 
 ## 🎯 Descripción  
 
@@ -21,7 +22,7 @@ El dispositivo es portátil, compacto, fácil de llevar y diseñado para no inte
 
 ## 👥 Público objetivo  
 
-- 👨‍🦯 Personas con discapacidad visual.  
+- 👨‍🦯 Personas con discapacidad visual o movilidad reducida.  
 
 - 🏥 Instituciones, aseguradoras o centros de rehabilitación que buscan tecnologías de apoyo.  
 
@@ -45,7 +46,6 @@ BLINDSSIST/
 ├── Hardware/          # Diseño y esquemáticos del dispositivo
 ├── firmware/          # Código embebido y firmware
 ├── docs/              # Documentación del proyecto
-└── README.md          # Este archivo
 ```
 
 ---
@@ -65,11 +65,8 @@ BLINDSSIST/
 ## 🧑‍💻 Equipo  
 
 ### **Castillo Ramiro**
-<a href="https://www.linkedin.com/in/ramiro-castillo-9a16b435b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank">
+<a href="https://www.linkedin.com/in/REEMPLAZAR_CASTILLO" target="_blank">
   <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn Castillo Ramiro">
-</a>
-<a href="mailto:castilloramiro06@gmail.com?subject=Contacto%20desde%20BLINDASSIST&body=Hola%20Ramiro,%0D%0A%0D%0A" target="_blank">
-  <img src="https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Email Castillo Ramiro">
 </a>
 
 **Email:** castilloramiro06@gmail.com
@@ -77,11 +74,8 @@ BLINDSSIST/
 ---
 
 ### **Pino Octavio**
-<a href="https://www.linkedin.com/in/octavio-pino-b596b635b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank">
+<a href="https://www.linkedin.com/in/REEMPLAZAR_PINO" target="_blank">
   <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn Pino Octavio">
-</a>
-<a href="mailto:octypino18@gmail.com?subject=Contacto%20desde%20BLINDASSIST&body=Hola%20Octavio,%0D%0A%0D%0A" target="_blank">
-  <img src="https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Email Pino Octavio">
 </a>
 
 **Email:** octypino18@gmail.com
@@ -89,18 +83,30 @@ BLINDSSIST/
 ---
 
 ### **Quattrocchi Tiago**
-<a href="https://www.linkedin.com/in/tiago-quattrocchi-9146b335b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank">
+<a href="https://www.linkedin.com/in/REEMPLAZAR_QUATTROCCHI" target="_blank">
   <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn Quattrocchi Tiago">
-</a>
-<a href="mailto:tiago4cchi@gmail.com?subject=Contacto%20desde%20BLINDASSIST&body=Hola%20Tiago,%0D%0A%0D%0A" target="_blank">
-  <img src="https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Email Quattrocchi Tiago">
 </a>
 
 **Email:** tiago4cchi@gmail.com
 
 ---
 
+## 💙 Sponsors
+
+Agradecemos profundamente a **TodoMicro** por su valioso apoyo y patrocinio de este proyecto. Su contribución nos permite continuar desarrollando tecnologías que mejoran la accesibilidad y la calidad de vida de las personas con discapacidad visual.
+
+<a href="https://www.todomicro.com.ar/" target="_blank">
+  <img src="https://img.shields.io/badge/TodoMicro-Sitio%20Web-FF6B35?style=for-the-badge&logo=google-chrome&logoColor=white" alt="TodoMicro Web">
+</a>
+<a href="https://www.instagram.com/todomicrostore/?hl=es" target="_blank">
+  <img src="https://img.shields.io/badge/Instagram-TodoMicro-E4405F?style=for-the-badge&logo=instagram&logoColor=white" alt="TodoMicro Instagram">
+</a>
+
+---
+
 <p align="center">
   <b>Hecho con ❤️ para mejorar la accesibilidad</b>
 </p>
+
+
 
