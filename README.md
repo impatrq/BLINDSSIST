@@ -65,33 +65,38 @@ BLINDSSIST/
 ## 🧑‍💻 Equipo  
 
 ### **Castillo Ramiro**
-<a href="https://www.linkedin.com/in/REEMPLAZAR_CASTILLO" target="_blank">
+<a href="https://www.linkedin.com/in/ramiro-castillo-9a16b435b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank">
   <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn Castillo Ramiro">
 </a>
 
-**Email:** castilloramiro06@gmail.com
-
+<a href="https://mail.google.com/mail/?view=cm&to=castilloramiro06@gmail.com" target="_blank">
+    <img alt="Gmail" src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" />
 ---
 
 ### **Pino Octavio**
-<a href="https://www.linkedin.com/in/REEMPLAZAR_PINO" target="_blank">
+<a href="https://www.linkedin.com/in/octavio-pino-b596b635b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank">
   <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn Pino Octavio">
 </a>
 
-**Email:** octypino18@gmail.com
-
+<a href="https://mail.google.com/mail/?view=cm&to=octypino18@gmail.com" target="_blank">
+    <img alt="Gmail" src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" />
 ---
 
 ### **Quattrocchi Tiago**
-<a href="https://www.linkedin.com/in/REEMPLAZAR_QUATTROCCHI" target="_blank">
+<a href="https://www.linkedin.com/in/tiago-quattrocchi-9146b335b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank">
   <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn Quattrocchi Tiago">
 </a>
 
-**Email:** tiago4cchi@gmail.com
-
+<a href="https://mail.google.com/mail/?view=cm&to=octypino18@gmail.com" target="_blank">
+    <img alt="Gmail" src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" />
 ---
 
 ## 💙 Sponsors
+
+<p align="center">
+  <img src="https://github.com/impatrq/BLINDSSIST/blob/main/docs/Recursos%20de%20video/logoSponsor.jpg" alt="TODOMICRO Logo" width="250">
+</p>
+
 
 Agradecemos profundamente a **TodoMicro** por su valioso apoyo y patrocinio de este proyecto. Su contribución nos permite continuar desarrollando tecnologías que mejoran la accesibilidad y la calidad de vida de las personas con discapacidad visual.
 
@@ -107,6 +112,7 @@ Agradecemos profundamente a **TodoMicro** por su valioso apoyo y patrocinio de e
 <p align="center">
   <b>Hecho con ❤️ para mejorar la accesibilidad</b>
 </p>
+
 
 
 
