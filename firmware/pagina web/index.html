@@ -23,6 +23,7 @@
       <a href="#impacto">Impacto social</a>
       <a href="#tecnico">Detalles técnicos</a>
       <a href="#contacto">Contacto</a>
+     <a href="#sponsors">Sponsors</a>
     </nav>
     <div class="accessibility-controls">
       <button id="readButton" class="read-button" aria-label="Leer contenido (Presiona R para activar)">
@@ -42,7 +43,10 @@
             <img src="Multimedia/integrantes/integrante1.jpeg" alt="Foto de [Nombre del integrante]">
           </div>
           <h3>Octavio Pino</h3>
-          
+          <div class="redes-sociales integrante-redes">
+            <a href="https://www.linkedin.com/in/octavio-pino-b596b635b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn de Octavio Pino"><i class="fab fa-linkedin"></i></a>
+            <a href="mailto:octy.pino18@gmail.com" aria-label="Enviar email a Octavio Pino"><i class="fas fa-envelope"></i></a>
+          </div>
         </div>
 
         <div class="integrante">
@@ -50,7 +54,10 @@
             <img src="Multimedia/integrantes/integrante2.jpg.jpeg" alt="Foto de [Nombre del integrante]">
           </div>
           <h3>Ramiro Castillo</h3>
-          
+          <div class="redes-sociales integrante-redes">
+            <a href="https://www.linkedin.com/in/ramiro-castillo-9a16b435b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn de Octavio Pino"><i class="fab fa-linkedin"></i></a>
+            <a href="mailto:castilloramiro06@gmail.com" aria-label="Enviar email a Octavio Pino"><i class="fas fa-envelope"></i></a>
+          </div>
         </div>
 
         <div class="integrante">
@@ -58,7 +65,10 @@
             <img src="Multimedia/integrantes/integrante3.jpg.jpeg" alt="Foto de [Nombre del integrante]">
           </div>
           <h3>Tiago Quattrocchi</h3>
-         
+         <div class="redes-sociales integrante-redes">
+            <a href="https://www.linkedin.com/in/tiago-quattrocchi-9146b335b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn de Octavio Pino"><i class="fab fa-linkedin"></i></a>
+            <a href="mailto:tiago4cchi@gmail.com" aria-label="Enviar email a Octavio Pino"><i class="fas fa-envelope"></i></a>
+          </div>
         </div>
       </div>
     </section>
@@ -133,6 +143,22 @@
         <button class="carrusel-btn next" aria-label="Siguiente imagen">❯</button>
       </div>
     </section>
+
+<section id="sponsors">
+      <h2>Sponsors</h2>
+      <div class="sponsors" aria-label="Patrocinadores">
+        <div class="sponsor-item">
+          <div class="sponsor-logo" aria-hidden="true">
+            <img src="Multimedia/logos/logoSponsor.jpg" alt="Logo del sponsor TODOMICRO style="max-width:100%; max-height:100%; object-fit:contain;" />
+          </div>
+          <p>Agradecemos a <strong>todo el equipo de TODOMICRO</strong> por su apoyo.</p>
+          <div class="redes-sociales">
+            <a href="https://www.instagram.com/todomicrostore/?hl=es" target="_blank" rel="noopener noreferrer" aria-label="Instagram del sponsor"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.todomicro.com.ar/" target="_blank" rel="noopener noreferrer" aria-label="Sitio web del sponsor"><i class="fas fa-globe"></i></a>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer>
@@ -157,7 +183,8 @@
         '2': '#consiste',
         '3': '#impacto',
         '4': '#tecnico',
-        '5': '#sponsors'
+        '5': '#galeria',
+        '6': '#sponsors'
       };
       if (sections[e.key]) {
         const target = document.querySelector(sections[e.key]);
