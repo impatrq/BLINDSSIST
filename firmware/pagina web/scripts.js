@@ -14,9 +14,9 @@ function animateOnScroll() {
     });
 }
 
-// Función para inicializar los gráficos
+
 function initCharts() {
-    // Gráfico 1: Población ciega mundial
+   
     const ctx1 = document.getElementById('grafico1').getContext('2d');
     new Chart(ctx1, {
         type: 'line',

@@ -18,11 +18,12 @@
     </div>
     <p class="tagline">Seguridad en cada paso.</p>
     <nav aria-label="Menú principal">
-      <a href="#quienes">¿Quiénes somos?</a>
-      <a href="#consiste">¿En qué consiste?</a>
-      <a href="#impacto">Impacto social</a>
-      <a href="#tecnico">Detalles técnicos</a>
-      <a href="#contacto">Contacto</a>
+     <a href="#quienes">¿Quiénes somos?</a>
+     <a href="#consiste">¿En qué consiste?</a>
+     <a href="#impacto">Impacto social</a>
+     <a href="#tecnico">Detalles técnicos</a>
+     <a href="#contacto">Contacto</a>
+     <a href="#galeria">Galería</a>
      <a href="#sponsors">Sponsors</a>
     </nav>
     <div class="accessibility-controls">
@@ -124,24 +125,35 @@
       </div>
     </section>
 
-    <section id="galeria">
-      <h2>Galería</h2>
-      <div class="galeria-carrusel">
-        <div class="carrusel-container">
-          <div class="carrusel-slide">
-            <img src="Multimedia/galeria/gal1.jpeg" alt="Diapositiva 1">
-          </div>
-          <div class="carrusel-slide">
-            <img src="Multimedia/galeria/gal2.jpeg" alt="Diapositiva 2">
-          </div>
-          <div class="carrusel-slide">
-            <img src="Multimedia/galeria/gal3.jpeg" alt="Diapositiva 3">
-          </div>
-          </div>
-        </div>
-        <button class="carrusel-btn prev" aria-label="Imagen anterior">❮</button>
-        <button class="carrusel-btn next" aria-label="Siguiente imagen">❯</button>
+  <section id="galeria">
+  <h2>Galería</h2>
+  <div class="galeria-carrusel">
+    <div class="carrusel-container">
+      <div class="carrusel-slide">
+        <img src="Multimedia/galeria/gal1.jpeg" alt="Diapositiva 1">
       </div>
+      <div class="carrusel-slide">
+        <img src="Multimedia/galeria/gal2.jpeg" alt="Diapositiva 2">
+      </div>
+      <div class="carrusel-slide">
+        <img src="Multimedia/galeria/gal3.jpeg" alt="Diapositiva 3">
+      </div>
+    </div>
+  </div>
+  <button class="carrusel-btn prev" aria-label="Imagen anterior">❮</button>
+  <button class="carrusel-btn next" aria-label="Siguiente imagen">❯</button>
+</section>
+
+<section id="video">
+  <h2>Presentación</h2>
+  <div class="video-container">
+    <iframe 
+      src="https://www.youtube.com/embed/WtQIYyYmt_g" 
+      title="Video de presentación BlindAssist" 
+      frameborder="0"
+      allowfullscreen>
+    </iframe>
+  </div>
     </section>
 
 <section id="sponsors">
@@ -149,7 +161,7 @@
       <div class="sponsors" aria-label="Patrocinadores">
         <div class="sponsor-item">
           <div class="sponsor-logo" aria-hidden="true">
-            <img src="Multimedia/logos/logoSponsor.jpg" alt="Logo del sponsor TODOMICRO style="max-width:100%; max-height:100%; object-fit:contain;" />
+            <img src="Multimedia/logos/truelogo.png" alt="Logo del sponsor TODOMICRO style="max-width:100%; max-height:100%; object-fit:contain;" />
           </div>
           <p>Agradecemos a <strong>todo el equipo de TODOMICRO</strong> por su apoyo.</p>
           <div class="redes-sociales">
@@ -183,8 +195,9 @@
         '2': '#consiste',
         '3': '#impacto',
         '4': '#tecnico',
-        '5': '#galeria',
-        '6': '#sponsors'
+        '5': '#contacto',
+        '6': '#galeria',
+        '7': '#sponsors'
       };
       if (sections[e.key]) {
         const target = document.querySelector(sections[e.key]);
