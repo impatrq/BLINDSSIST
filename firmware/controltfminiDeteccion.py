@@ -45,21 +45,36 @@ estado_visual_activo = False
 
 def gestionar_botones():
     global estado_haptico_activo, estado_visual_activo
+    # Inicialización de estados previos es correcta
     estado_prev_haptico = GPIO.input(BUTTON_HAPTIC_PIN)
     estado_prev_visual = GPIO.input(BUTTON_VISUAL_PIN)
+    
+    # Tiempo de espera (debounce) después de la pulsación
+    DEBOUNCE_TIME = 0.3  # Ajustado a 300 ms (un valor común y robusto)
 
     while True:
+        # Lógica para el botón HÁPTICO
         estado_actual_haptico = GPIO.input(BUTTON_HAPTIC_PIN)
         if estado_prev_haptico == GPIO.HIGH and estado_actual_haptico == GPIO.LOW:
+            # Flanco de bajada detectado: Invertir estado y esperar
             estado_haptico_activo = not estado_haptico_activo
+            time.sleep(DEBOUNCE_TIME)  # <--- CLAVE: Ignorar rebote y pulsaciones rápidas
+            
         estado_prev_haptico = estado_actual_haptico
 
+        # Lógica para el botón VISUAL
         estado_actual_visual = GPIO.input(BUTTON_VISUAL_PIN)
         if estado_prev_visual == GPIO.HIGH and estado_actual_visual == GPIO.LOW:
+            # Flanco de bajada detectado: Invertir estado y esperar
             estado_visual_activo = not estado_visual_activo
+            time.sleep(DEBOUNCE_TIME)  # <--- CLAVE: Ignorar rebote y pulsaciones rápidas
+            
         estado_prev_visual = estado_actual_visual
 
-        time.sleep(0.05)
+        # time.sleep(0.05)
+        # Se puede reducir o eliminar este sleep, ya que el DEBOUNCE_TIME ya maneja la pausa.
+        # Lo dejaré en 0.01s para no consumir CPU innecesariamente si no hay pulsaciones.
+        time.sleep(0.01)
 
 
 # ====================================================================
