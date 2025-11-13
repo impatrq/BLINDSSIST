@@ -9,22 +9,22 @@
 <p align="center">
 
 <!-- Instagram -->
-<a href="https://www.instagram.com/blindassist.ar/" target="_blank">
-  <img src="https://img.shields.io/badge/Instagram-BLINDASSIST-E4405F?style=for-the-badge&logo=instagram&logoColor=white" alt="Instagram">
+<a href="https://www.instagram.com/blindassist/" target="_blank">
+  <img src="https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white" alt="Instagram">
 </a>
 
 <!-- LinkedIn -->
-<a href="https://www.linkedin.com/company/blindassist/" target="_blank">
+<a href="https://www.linkedin.com/in/proyecto-blindassist-72b0a7396" target="_blank">
   <img src="https://img.shields.io/badge/LinkedIn-BLINDASSIST-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn">
 </a>
 
 <!-- Página Web -->
-<a href="https://blindassist.ar/" target="_blank">
+<a href="https://castiilloramiro.github.io/BlindWeb/" target="_blank">
   <img src="https://img.shields.io/badge/Sitio%20Web-blindassist.ar-4CAF50?style=for-the-badge&logo=google-chrome&logoColor=white" alt="Web">
 </a>
 
 <!-- Linktree -->
-<a href="https://linktr.ee/blindassist" target="_blank">
+<a href="http://linktr.ee/blindassist?fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQMMjU2MjgxMDQwNTU4AAGnGmq88jx-DNTPv_4anH8uwYERlkiLt2I39dWJovY6Oz3yGSi1BDTDOGQVvNU_aem_e0TZLUZKbtbvNXp4jfwh2Q" target="_blank">
   <img src="https://img.shields.io/badge/Linktree-BLINDASSIST-43E55E?style=for-the-badge&logo=linktree&logoColor=white" alt="Linktree BlindAssist">
 </a>
 
