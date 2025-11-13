@@ -43,39 +43,21 @@ estado_haptico_activo = False
 estado_visual_activo = False
 
 
-def gestionar_botones():
-    global estado_haptico_activo, estado_visual_activo
-    # Inicialización de estados previos es correcta
-    estado_prev_haptico = GPIO.input(BUTTON_HAPTIC_PIN)
-    estado_prev_visual = GPIO.input(BUTTON_VISUAL_PIN)
-    
-    # Tiempo de espera (debounce) después de la pulsación
-    DEBOUNCE_TIME = 0.3  # Ajustado a 300 ms (un valor común y robusto)
+# ====================================================================
+# NUEVAS FUNCIONES DE CALLBACK
+# ====================================================================
 
-    while True:
-        # Lógica para el botón HÁPTICO
-        estado_actual_haptico = GPIO.input(BUTTON_HAPTIC_PIN)
-        if estado_prev_haptico == GPIO.HIGH and estado_actual_haptico == GPIO.LOW:
-            # Flanco de bajada detectado: Invertir estado y esperar
-            estado_haptico_activo = not estado_haptico_activo
-            time.sleep(DEBOUNCE_TIME)  # <--- CLAVE: Ignorar rebote y pulsaciones rápidas
-            
-        estado_prev_haptico = estado_actual_haptico
+def toggle_haptico(channel):
+    """Invierte el estado del control háptico al presionar el botón."""
+    global estado_haptico_activo
+    estado_haptico_activo = not estado_haptico_activo
+    print(f"DEBUG: Haptico activo: {estado_haptico_activo}") # Opcional: para verificar
 
-        # Lógica para el botón VISUAL
-        estado_actual_visual = GPIO.input(BUTTON_VISUAL_PIN)
-        if estado_prev_visual == GPIO.HIGH and estado_actual_visual == GPIO.LOW:
-            # Flanco de bajada detectado: Invertir estado y esperar
-            estado_visual_activo = not estado_visual_activo
-            time.sleep(DEBOUNCE_TIME)  # <--- CLAVE: Ignorar rebote y pulsaciones rápidas
-            
-        estado_prev_visual = estado_actual_visual
-
-        # time.sleep(0.05)
-        # Se puede reducir o eliminar este sleep, ya que el DEBOUNCE_TIME ya maneja la pausa.
-        # Lo dejaré en 0.01s para no consumir CPU innecesariamente si no hay pulsaciones.
-        time.sleep(0.01)
-
+def toggle_visual(channel):
+    """Invierte el estado de la detección visual al presionar el botón."""
+    global estado_visual_activo
+    estado_visual_activo = not estado_visual_activo
+    print(f"DEBUG: Visual activo: {estado_visual_activo}") # Opcional: para verificar
 
 # ====================================================================
 # LÓGICA DE CONTROL HÁPTICO (LiDAR)
@@ -340,7 +322,18 @@ def main():
         threading.Thread(target=getTFminiData_uart3, daemon=True).start()
 
         # Gestiona los botones físicos con resistencia pull-up interna
-        threading.Thread(target=gestionar_botones, daemon=True).start()
+        GPIO.add_event_detect(
+            BUTTON_HAPTIC_PIN, 
+            GPIO.FALLING, 
+            callback=toggle_haptico, 
+            bouncetime=300
+        )
+        GPIO.add_event_detect(
+            BUTTON_VISUAL_PIN, 
+            GPIO.FALLING, 
+            callback=toggle_visual, 
+            bouncetime=300
+        )
 
         # Inicia el hilo centralizado para el control de PWM (háptico)
         threading.Thread(target=control_sensores, daemon=True).start()
