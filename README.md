@@ -4,7 +4,7 @@
   <img src="https://github.com/impatrq/BLINDSSIST/blob/main/firmware/pagina web/Multimedia/logos/Capa 0.png" alt="BLINDSSIST Logo" width="250">
 </p>
 
----
+
 
 <p align="center">
 
@@ -15,12 +15,12 @@
 
 <!-- LinkedIn -->
 <a href="https://www.linkedin.com/in/proyecto-blindassist-72b0a7396" target="_blank">
-  <img src="https://img.shields.io/badge/LinkedIn-BLINDASSIST-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn">
+  <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn">
 </a>
 
 <!-- Página Web -->
 <a href="https://castiilloramiro.github.io/BlindWeb/" target="_blank">
-  <img src="https://img.shields.io/badge/Sitio%20Web-blindassist.ar-4CAF50?style=for-the-badge&logo=google-chrome&logoColor=white" alt="Web">
+  <img src="https://img.shields.io/badge/Sitio%20Web-4CAF50?style=for-the-badge&logo=google-chrome&logoColor=white" alt="Web">
 </a>
 
 <a href="https://mail.google.com/mail/?view=cm&to=blindassist2025@gmail.com" target="_blank">
@@ -103,7 +103,7 @@ BLINDSSIST/
 
 <a href="https://mail.google.com/mail/?view=cm&to=castilloramiro06@gmail.com" target="_blank">
     <img alt="Gmail" src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" />
----
+
 
 ### **Pino Octavio**
 <a href="https://www.linkedin.com/in/octavio-pino-b596b635b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank">
@@ -112,7 +112,7 @@ BLINDSSIST/
 
 <a href="https://mail.google.com/mail/?view=cm&to=octypino18@gmail.com" target="_blank">
     <img alt="Gmail" src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" />
----
+
 
 ### **Quattrocchi Tiago**
 <a href="https://www.linkedin.com/in/tiago-quattrocchi-9146b335b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank">
@@ -121,7 +121,7 @@ BLINDSSIST/
 
 <a href="https://mail.google.com/mail/?view=cm&to=octypino18@gmail.com" target="_blank">
     <img alt="Gmail" src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" />
----
+
 
 ## 💙 Sponsors
 
@@ -144,6 +144,7 @@ Agradecemos profundamente a **TodoMicro** por su valioso apoyo y patrocinio de e
 <p align="center">
   <b>Hecho con ❤️ para mejorar la accesibilidad</b>
 </p>
+
 
 
 
