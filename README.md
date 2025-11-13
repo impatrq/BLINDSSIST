@@ -28,7 +28,7 @@
 
 <!-- Linktree -->
 <a href="http://linktr.ee/blindassist?fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQMMjU2MjgxMDQwNTU4AAGnGmq88jx-DNTPv_4anH8uwYERlkiLt2I39dWJovY6Oz3yGSi1BDTDOGQVvNU_aem_e0TZLUZKbtbvNXp4jfwh2Q" target="_blank">
-  <img src="https://img.shields.io/badge/Linktree-BLINDASSIST-43E55E?style=for-the-badge&logo=linktree&logoColor=white" alt="Linktree BlindAssist">
+  <img src="https://img.shields.io/badge/Linktree-43E55E?style=for-the-badge&logo=linktree&logoColor=white" alt="Linktree BlindAssist">
 </a>
 
 </p>
@@ -144,6 +144,7 @@ Agradecemos profundamente a **TodoMicro** por su valioso apoyo y patrocinio de e
 <p align="center">
   <b>Hecho con ❤️ para mejorar la accesibilidad</b>
 </p>
+
 
 
 
