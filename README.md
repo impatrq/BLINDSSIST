@@ -86,7 +86,9 @@ BLINDSSIST/
 
 ---
 
-## 🧑‍💻 Equipo  
+## 🧑‍💻 Equipo 
+
+<img src="docs/Codigo tex/Carpeta tecnica/Fotogrupo.jpg" width="300">
 
 ### **Castillo Ramiro**
 <a href="https://www.linkedin.com/in/ramiro-castillo-9a16b435b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank">
@@ -136,6 +138,7 @@ Agradecemos profundamente a **TodoMicro** por su valioso apoyo y patrocinio de e
 <p align="center">
   <b>Hecho con ❤️ para mejorar la accesibilidad</b>
 </p>
+
 
 
 
