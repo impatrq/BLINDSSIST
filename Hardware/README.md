@@ -4,11 +4,11 @@ Esta Carpeta contiene todos los archivos relacionados con el **diseño físico y
 
 ## 📁 Contenido
 
-- **/PLACAS PCB/** → Diseños de placas electrónicas (layout, gerbers, etc.)  
-- **/Conversor USB-TTL /** → Hoja de datos.  
-- **/Diseños3D/** → Modelos 3D de las carcasas, agarres y logos.
-- **/TFmini/** → Hojas de datos.  
-- **/Fuente step-down/** → Hojas de datos de los componentes utilizados.  
+- **PLACAS PCB** → Diseños de placas electrónicas (layout, gerbers, etc.)  
+- **Conversor USB-TTL** → Hoja de datos.  
+- **Diseños3D** → Modelos 3D de las carcasas, agarres y logos.
+- **TFmini** → Hojas de datos.  
+- **Fuente step-down** → Hojas de datos de los componentes utilizados.  
 
 ## 🛠️ Uso
 
