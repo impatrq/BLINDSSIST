@@ -6,6 +6,30 @@
 
 ---
 
+<p align="center">
+
+<!-- Instagram -->
+<a href="https://www.instagram.com/blindassist.ar/" target="_blank">
+  <img src="https://img.shields.io/badge/Instagram-BLINDASSIST-E4405F?style=for-the-badge&logo=instagram&logoColor=white" alt="Instagram">
+</a>
+
+<!-- LinkedIn -->
+<a href="https://www.linkedin.com/company/blindassist/" target="_blank">
+  <img src="https://img.shields.io/badge/LinkedIn-BLINDASSIST-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn">
+</a>
+
+<!-- Página Web -->
+<a href="https://blindassist.ar/" target="_blank">
+  <img src="https://img.shields.io/badge/Sitio%20Web-blindassist.ar-4CAF50?style=for-the-badge&logo=google-chrome&logoColor=white" alt="Web">
+</a>
+
+<!-- Linktree -->
+<a href="https://linktr.ee/blindassist" target="_blank">
+  <img src="https://img.shields.io/badge/Linktree-BLINDASSIST-43E55E?style=for-the-badge&logo=linktree&logoColor=white" alt="Linktree BlindAssist">
+</a>
+
+</p>
+
 ## 🎯 Descripción  
 
 BLINDASSIST es un proyecto orientado a facilitar el tránsito de usuarios con discapacidad visual en su vida cotidiana. A través de un dispositivo colgante —o integrado en algún accesorio— funciona como ayuda al bastón tradicional, ofreciendo:  
@@ -112,6 +136,7 @@ Agradecemos profundamente a **TodoMicro** por su valioso apoyo y patrocinio de e
 <p align="center">
   <b>Hecho con ❤️ para mejorar la accesibilidad</b>
 </p>
+
 
 
 
