@@ -23,15 +23,43 @@ except ImportError:
 MOTOR_PIN1 = 12    # PWM 1
 MOTOR_PIN2 = 13    # PWM 2
 
+BUTTON_HAPTIC_PIN = 17   # Botón para activar/desactivar control háptico
+BUTTON_VISUAL_PIN = 27   # Botón para activar/desactivar detección visual
+
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(MOTOR_PIN1, GPIO.OUT)
 GPIO.setup(MOTOR_PIN2, GPIO.OUT)
+GPIO.setup(BUTTON_HAPTIC_PIN, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+GPIO.setup(BUTTON_VISUAL_PIN, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
 # Inicialización de PWM
 pwm1 = GPIO.PWM(MOTOR_PIN1, 100)
 pwm2 = GPIO.PWM(MOTOR_PIN2, 100)
 pwm1.start(0)
 pwm2.start(0)
+
+
+estado_haptico_activo = False
+estado_visual_activo = False
+
+
+def gestionar_botones():
+    global estado_haptico_activo, estado_visual_activo
+    estado_prev_haptico = GPIO.input(BUTTON_HAPTIC_PIN)
+    estado_prev_visual = GPIO.input(BUTTON_VISUAL_PIN)
+
+    while True:
+        estado_actual_haptico = GPIO.input(BUTTON_HAPTIC_PIN)
+        if estado_prev_haptico == GPIO.HIGH and estado_actual_haptico == GPIO.LOW:
+            estado_haptico_activo = not estado_haptico_activo
+        estado_prev_haptico = estado_actual_haptico
+
+        estado_actual_visual = GPIO.input(BUTTON_VISUAL_PIN)
+        if estado_prev_visual == GPIO.HIGH and estado_actual_visual == GPIO.LOW:
+            estado_visual_activo = not estado_visual_activo
+        estado_prev_visual = estado_actual_visual
+
+        time.sleep(0.05)
 
 
 # ====================================================================
@@ -47,12 +75,17 @@ def calcular_duty(d):
 
 def control_sensores():
     """Ejecuta el bucle principal que aplica el PWM a los motores según las reglas de proximidad."""
+    global estado_haptico_activo
     toggle1 = False
     toggle2 = False
     while True:
         # Reinicia el PWM a 0% al inicio de cada ciclo
         pwm1.ChangeDutyCycle(0)
         pwm2.ChangeDutyCycle(0)
+
+        if not estado_haptico_activo:
+            time.sleep(0.1)
+            continue
 
         d1 = distancias.get("uart1")
         d2 = distancias.get("uart2")
@@ -227,6 +260,7 @@ class AsistentePrincipal:
 
     def iniciar_visual_loop(self):
         """Ejecuta el bucle principal de captura, análisis de IA y anuncio."""
+        global estado_visual_activo
         if not self.__camara.iniciar():
             return
 
@@ -234,6 +268,10 @@ class AsistentePrincipal:
         
         try:
             while True:
+                if not estado_visual_activo:
+                    time.sleep(0.1)
+                    continue
+
                 frame = self.__camara.capturar_frame()
                 if frame is None:
                     time.sleep(1)
@@ -267,6 +305,9 @@ def main():
         threading.Thread(target=getTFminiData_uart1, daemon=True).start()
         threading.Thread(target=getTFminiData_uart2, daemon=True).start()
         threading.Thread(target=getTFminiData_uart3, daemon=True).start()
+
+        # Gestiona los botones físicos con resistencia pull-up interna
+        threading.Thread(target=gestionar_botones, daemon=True).start()
 
         # Inicia el hilo centralizado para el control de PWM (háptico)
         threading.Thread(target=control_sensores, daemon=True).start()
