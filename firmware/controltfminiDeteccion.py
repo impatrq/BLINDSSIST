@@ -93,14 +93,20 @@ def control_sensores():
     global estado_haptico_activo
     toggle1 = False
     toggle2 = False
+    
     while True:
-        # Reinicia el PWM a 0% al inicio de cada ciclo
+        # 1. INICIALIZACIÓN: Los motores se apagan por defecto
+        # Asume que no hay peligro. Se sobreescribirá si se detecta proximidad.
         pwm1.ChangeDutyCycle(0)
         pwm2.ChangeDutyCycle(0)
 
+        # Si el modo háptico está desactivado, salta la lógica
         if not estado_haptico_activo:
             time.sleep(0.1)
             continue
+        
+        # Bandera para saber si se ha detectado peligro
+        peligro_detectado = False 
 
         d1 = distancias.get("uart1")
         d2 = distancias.get("uart2")
@@ -109,43 +115,55 @@ def control_sensores():
         duty1 = calcular_duty(d1)
         duty2 = calcular_duty(d2)
         duty3 = calcular_duty(d3)
+        
+        # =========================================================
+        # REGLAS DE PROXIMIDAD (De la más restrictiva a la menos)
+        # =========================================================
 
         # 1. CASO 6: LOS TRES < 120 (Máxima alerta)
         if all(d is not None and d < 120 for d in [d1, d2, d3]):
             pwm1.ChangeDutyCycle(100)
             pwm2.ChangeDutyCycle(100)
-            time.sleep(0.1)
-            continue
-
+            peligro_detectado = True
+            # No uses continue aquí, usa else if para que un caso no anule a los demás.
+        
         # 2. CASO 4: UART2 y UART3 <120 (Titila Motor 2)
-        if (d2 is not None and d2 < 120) and (d3 is not None and d3 < 120):
+        elif (d2 is not None and d2 < 120) and (d3 is not None and d3 < 120):
             toggle2 = not toggle2
             pwm2.ChangeDutyCycle(duty2 if toggle2 else 0)
-            time.sleep(0.3)
-            continue
-
+            pwm1.ChangeDutyCycle(0) # Asegura el estado del otro motor
+            time.sleep(0.3) # Mantén el sleep para el efecto de titileo
+            peligro_detectado = True
+        
         # 3. CASO 5: UART1 y UART3 <120 (Titila Motor 1)
-        if (d1 is not None and d1 < 120) and (d3 is not None and d3 < 120):
+        elif (d1 is not None and d1 < 120) and (d3 is not None and d3 < 120):
             toggle1 = not toggle1
             pwm1.ChangeDutyCycle(duty1 if toggle1 else 0)
-            time.sleep(0.3)
-            continue
+            pwm2.ChangeDutyCycle(0) # Asegura el estado del otro motor
+            time.sleep(0.3) # Mantén el sleep para el efecto de titileo
+            peligro_detectado = True
 
         # 4. CASO 3: SOLO UART3 <120 (Ambos motores iguales)
-        if d3 is not None and d3 < 120:
+        elif d3 is not None and d3 < 120:
             pwm1.ChangeDutyCycle(duty3)
             pwm2.ChangeDutyCycle(duty3)
-            time.sleep(0.1)
-            continue
+            peligro_detectado = True
+            
+        # 5. CASOS 1 y 2: Comportamiento individual (si no se cumplen los casos anteriores)
+        else: 
+            if d1 is not None and d1 < 120:
+                pwm1.ChangeDutyCycle(duty1)
+                peligro_detectado = True
+                
+            if d2 is not None and d2 < 120:
+                pwm2.ChangeDutyCycle(duty2)
+                peligro_detectado = True
+        
+        # **ELIMINA TODOS LOS `continue` DENTRO DE LOS BLOQUES `if`**
 
-        # 5. CASOS 1 y 2: Comportamiento individual
-        if d1 is not None and d1 < 120:
-            pwm1.ChangeDutyCycle(duty1)
-        if d2 is not None and d2 < 120:
-            pwm2.ChangeDutyCycle(duty2)
-
-        time.sleep(0.1)
-
+        # Retraso normal del bucle. Usamos 0.1s o el tiempo del titileo
+        if not peligro_detectado:
+             time.sleep(0.1)
 
 # ====================================================================
 # MÓDULOS DE DETECCIÓN VISUAL (Clases)
