@@ -23,8 +23,8 @@ except ImportError:
 MOTOR_PIN1 = 12    # PWM 1
 MOTOR_PIN2 = 13    # PWM 2
 
-BUTTON_HAPTIC_PIN = 17   # Botón para activar/desactivar control háptico
-BUTTON_VISUAL_PIN = 27   # Botón para activar/desactivar detección visual
+BUTTON_HAPTIC_PIN = 8   # Botón para activar/desactivar control háptico
+BUTTON_VISUAL_PIN = 25   # Botón para activar/desactivar detección visual
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(MOTOR_PIN1, GPIO.OUT)
