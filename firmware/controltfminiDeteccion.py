@@ -20,10 +20,10 @@ except ImportError:
 
 
 # Configuración de pines de hardware para motores
-MOTOR_PIN1 = 12    # PWM 1
-MOTOR_PIN2 = 13    # PWM 2
+MOTOR_PIN1 = 12     # PWM 1
+MOTOR_PIN2 = 13     # PWM 2
 
-BUTTON_HAPTIC_PIN = 8   # Botón para activar/desactivar control háptico
+BUTTON_HAPTIC_PIN = 8    # Botón para activar/desactivar control háptico
 BUTTON_VISUAL_PIN = 25   # Botón para activar/desactivar detección visual
 
 GPIO.setmode(GPIO.BCM)
@@ -39,29 +39,24 @@ pwm1.start(0)
 pwm2.start(0)
 
 
+# ====================================================================
+# VARIABLES DE ESTADO Y BOTONES
+# ====================================================================
+
 estado_haptico_activo = False
 estado_visual_activo = False
 
+# Variables para Polling: mantienen el estado anterior del botón
+last_haptic_state = GPIO.HIGH
+last_visual_state = GPIO.HIGH
 
-# ====================================================================
-# NUEVAS FUNCIONES DE CALLBACK
-# ====================================================================
 
-def toggle_haptico(channel):
-    """Invierte el estado del control háptico al presionar el botón."""
-    global estado_haptico_activo
-    estado_haptico_activo = not estado_haptico_activo
-    print(f"DEBUG: Haptico activo: {estado_haptico_activo}") # Opcional: para verificar
-
-def toggle_visual(channel):
-    """Invierte el estado de la detección visual al presionar el botón."""
-    global estado_visual_activo
-    estado_visual_activo = not estado_visual_activo
-    print(f"DEBUG: Visual activo: {estado_visual_activo}") # Opcional: para verificar
+# Las funciones toggle_haptico y toggle_visual se han eliminado ya que 
+# la lógica de toggle ahora está en el hilo de Polling.
 
 # ====================================================================
 # LÓGICA DE CONTROL HÁPTICO (LiDAR)
-# Control coordinado de PWM basado en la proximidad de los 3 sensores.
+# ... [Lógica de control_sensores() NO ALTERADA] ...
 # ====================================================================
 
 def calcular_duty(d):
@@ -78,7 +73,6 @@ def control_sensores():
     
     while True:
         # 1. INICIALIZACIÓN: Los motores se apagan por defecto
-        # Asume que no hay peligro. Se sobreescribirá si se detecta proximidad.
         pwm1.ChangeDutyCycle(0)
         pwm2.ChangeDutyCycle(0)
 
@@ -107,7 +101,6 @@ def control_sensores():
             pwm1.ChangeDutyCycle(100)
             pwm2.ChangeDutyCycle(100)
             peligro_detectado = True
-            # No uses continue aquí, usa else if para que un caso no anule a los demás.
         
         # 2. CASO 4: UART2 y UART3 <120 (Titila Motor 2)
         elif (d2 is not None and d2 < 120) and (d3 is not None and d3 < 120):
@@ -141,14 +134,14 @@ def control_sensores():
                 pwm2.ChangeDutyCycle(duty2)
                 peligro_detectado = True
         
-        # **ELIMINA TODOS LOS `continue` DENTRO DE LOS BLOQUES `if`**
 
         # Retraso normal del bucle. Usamos 0.1s o el tiempo del titileo
         if not peligro_detectado:
-             time.sleep(0.1)
+              time.sleep(0.1)
 
 # ====================================================================
 # MÓDULOS DE DETECCIÓN VISUAL (Clases)
+# ... [El resto de las clases Camara, Voz, Traductor, IA, AsistentePrincipal NO ALTERADAS] ...
 # ====================================================================
 
 class Camara:
@@ -307,11 +300,47 @@ class AsistentePrincipal:
 
 
 # ====================================================================
+# NUEVA FUNCIÓN PARA POLLING DE BOTONES
+# ====================================================================
+
+def button_polling_loop():
+    """Bucle de polling para manejar los botones con debounce por software."""
+    global estado_haptico_activo, estado_visual_activo
+    global last_haptic_state, last_visual_state
+    
+    # Tiempo de espera (debounce/sleep) entre chequeos
+    POLLING_DELAY = 0.05 
+    
+    while True:
+        # --- Lógica del Botón Háptico (LiDAR) ---
+        haptic_input = GPIO.input(BUTTON_HAPTIC_PIN)
+        
+        # Detecta flanco de bajada (presionado)
+        if haptic_input == GPIO.LOW and last_haptic_state == GPIO.HIGH:
+            estado_haptico_activo = not estado_haptico_activo
+            print(f"DEBUG Polling: Haptico activo: {estado_haptico_activo}")
+            
+        last_haptic_state = haptic_input
+        
+        # --- Lógica del Botón Visual (IA) ---
+        visual_input = GPIO.input(BUTTON_VISUAL_PIN)
+        
+        # Detecta flanco de bajada (presionado)
+        if visual_input == GPIO.LOW and last_visual_state == GPIO.HIGH:
+            estado_visual_activo = not estado_visual_activo
+            print(f"DEBUG Polling: Visual activo: {estado_visual_activo}")
+
+        last_visual_state = visual_input
+
+        time.sleep(POLLING_DELAY)
+
+
+# ====================================================================
 # FUNCIÓN PRINCIPAL (MAIN)
 # ====================================================================
 
 def main():
-    """Configura e inicia los hilos para el sistema háptico y visual simultáneamente."""
+    """Configura e inicia los hilos para el sistema háptico, visual y de polling."""
     
     asistente = AsistentePrincipal()
     
@@ -321,19 +350,9 @@ def main():
         threading.Thread(target=getTFminiData_uart2, daemon=True).start()
         threading.Thread(target=getTFminiData_uart3, daemon=True).start()
 
-        # Gestiona los botones físicos con resistencia pull-up interna
-        GPIO.add_event_detect(
-            BUTTON_HAPTIC_PIN, 
-            GPIO.FALLING, 
-            callback=toggle_haptico, 
-            bouncetime=300
-        )
-        GPIO.add_event_detect(
-            BUTTON_VISUAL_PIN, 
-            GPIO.FALLING, 
-            callback=toggle_visual, 
-            bouncetime=300
-        )
+        # 🚀 INICIA EL HILO DE POLLING DE BOTONES
+        threading.Thread(target=button_polling_loop, daemon=True).start()
+        # NOTA: Se eliminaron las llamadas a GPIO.add_event_detect
 
         # Inicia el hilo centralizado para el control de PWM (háptico)
         threading.Thread(target=control_sensores, daemon=True).start()
