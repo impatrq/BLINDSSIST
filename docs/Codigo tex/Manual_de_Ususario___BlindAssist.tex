@@ -1,0 +1,365 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref}
+\usepackage{float}
+\usepackage{geometry}
+\usepackage{xcolor}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{chngcntr}
+\counterwithin{figure}{section}
+\counterwithin{table}{section}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{adjustbox}
+
+\geometry{margin=2.5cm}
+
+% Definimos el color de los meses y líneas
+\definecolor{mescolor}{HTML}{024d50}
+\definecolor{linecolor}{HTML}{024d50}
+\definecolor{verdeagua}{HTML}{1B9E96}
+\definecolor{verdeoscuro}{HTML}{002C2D}
+\definecolor{verdemedio}{HTML}{004F4E}
+
+% Cambiar color de secciones
+\usepackage{titlesec}
+\titleformat{\section}
+{\color{mescolor}\normalfont\Large\bfseries}
+{}{0pt}{}
+\titlespacing*{\section}{0pt}{*2}{*1}
+
+% Línea negra debajo de cada mes
+\newcommand{\separador}{\vspace{0.5cm}\noindent\rule{\linewidth}{0.5pt}\vspace{0.5cm}}
+
+% Cambiar color en el índice y tamaño más grande
+\usepackage{tocloft}
+\renewcommand{\cftsecfont}{\color{mescolor}\bfseries\Large}
+\renewcommand{\cftsecpagefont}{\color{mescolor}\bfseries\Large}
+
+% Configuración encabezado y pie de página con líneas de color y largo ajustable
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\textbf{Proyecto BlindAssist}}
+\fancyhead[R]{\includegraphics[width=0.08\linewidth]{Manual de Usuario/logo indice.png}} % Espacio vacío para que no haya logo
+\fancyfoot[C]{\thepage}
+
+% Línea de encabezado de color y largo personalizado
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\renewcommand{\headrule}{%
+\color{linecolor}\hrule width 1\linewidth height 0.4pt \vskip0pt}
+\renewcommand{\footrule}{%
+\color{linecolor}\hrule width \linewidth height 0.4pt \vskip0pt}
+
+\begin{document}
+
+\begin{titlepage}
+    \begin{center}
+    
+    % --- Imagen centrada en la parte superior ---
+    \vspace*{2cm}
+    \includegraphics[width=0.8\textwidth]{Manual de Usuario/logo indice.png}\\[2cm] % <-- cambia la ruta a tu imagen
+
+    % --- Título principal ---
+    {\Huge\bfseries Proyecto BlindAssist \\[0.5cm]}
+    {\Large Manual de Usuario}\\[1.5cm]
+
+
+    % --- Institución o facultad ---
+    {\large Escuela de Educación Secundaria Técnica N°7 "Taller Regional Quilmes"}\\
+    {\large 7°2 Aviónica}\\
+
+    % --- Espacio para dejar limpio el resto de la hoja ---
+    \vfill
+    \end{center}
+\end{titlepage}
+
+% Índice con numeración desde aquí
+\setcounter{page}{1}
+\setcounter{tocdepth}{4} % muestra hasta paragraph en el índice
+\setcounter{secnumdepth}{4}
+\tableofcontents
+\newpage
+
+\begin{center}
+    \textbf{ Este manual podrá leerse mediante bots de voz.}
+\end{center}
+
+\section{Introducción}
+
+El presente manual tiene como objetivo brindar una guía clara y accesible sobre el uso, funcionamiento y mantenimiento del dispositivo \textbf{BlindAssist}.
+
+El objetivo de este proyecto es mantener la integridad de las personas ciegas o con algún tipo de discapacidad visual en cualquier tipo de entorno urbano y darles un mayor nivel de conciencia en entornos mas cerrados. Para ello, desarrollamos un dispositivo que mediante reconocimiento por inteligencia artificial y la detección de objetos utilizando tecnología láser para avisar al usuario sobre un obstáculo en frente, por encima de la cadera, la presencia de alguna persona en un espacio cerrado y la cantidad de individuos que se encuentran en el mismo espacio, contando con alertas sonoras y vibratorias que no alteren su percepción y condición actual.Este dispositivo funcionara como una ayuda al bastón que utilizan en su día a día sin modificar su efectividad o tratar de reemplazar su función.
+
+\subsection{Problemas a resolver}
+
+\begin{itemize}
+\item Obstáculos repentinos en la vía publica, pueden presentar dificultad a la hora de detectar postes, árboles y otros peligros inesperados que se encuentren por encima de su tren inferior (a partir de la cadera), siendo que la mayoría de las veces el rango que cubre el bastón no es suficiente para detectar y avisar efectivamente a la persona con discapacidad visual.
+\item El riesgo constante que sufren en la vía publica termina llevando a que dependan mucho de terceros, como puede ser transeúntes que los apoyen o en casos de personas con una edad mas avanzada, un cuidador designado o familiar cercano. Tenemos en cuenta la falta de autonomía que genera esta problemática, la dependencia que terminan teniendo de terceros es una de las problemáticas más importantes a resolver y la idea es darles una herramienta de autonomía e integración.
+\item Proteger su intimidad pudiendo detectar personas que están en el mismo espacio cerrado sin depender de que la persona avise de su llegada, también permitiéndoles conocer la ubicación de dichos individuos, dándole un mejor sentido y conciencia situacional.
+\end{itemize}
+% ===========================================================
+\section{Descripción general del sistema}
+
+\subsection{Componentes principales}
+\begin{itemize}
+    \item \textbf{Raspberry Pi 4}
+    \item \textbf{Cámara HQ / V2}
+    \item \textbf{3 Sensores LiDAR TFmini}
+    \item \textbf{Auriculares o parlante}
+    \item \textbf{2 Motores vibradores} 
+    \item \textbf{4 Baterías 18650}
+    \item \textbf{Carcasa impresa en 3D}
+\end{itemize}
+
+\begin{center}
+\includegraphics[width=0.50\linewidth]{Recursos/imagenes centradas/componentes.jpg}
+\end{center}
+
+\subsection{Funciones principales}
+\begin{enumerate}
+    \item Detección de elementos y análisis mediante IA.
+    \item Emisión de alertas por voz simples para comunicar efectivamente elementos importantes.
+    \item Detección de objetos intrusos con un rango de 120 grados frente al dispositivo mediante lasers colocados estratégicamente.
+    \item Comunicación de objetos intrusos frente al usuario mediante motores a cada lado del dispositivo.
+\end{enumerate}
+
+% ===========================================================
+\section{Instalación y encendido}
+
+\subsection{Carga inicial}
+\begin{enumerate}
+    \item Abrir la carcasa del dispositivo.
+    \item En caso de contar con baterías 18650 no recargables, conectar directamente.
+    \item En caso de contar con baterías 18650 recargables, cargar completamente las baterías con el cargador inteligente de 18650.
+    \item Conectar las baterías al porta baterías del dispositivo.
+\end{enumerate}
+
+\subsection{Encendido del sistema}
+\begin{enumerate}
+    \item Conectar auriculares de cable a la entrada de jack al lateral del dispositivo. (Cualquier tipo de auricular por cable, se recomiendan del tipo diadema.)
+    \item Presionar el botón de encendido al lateral del dispositivo.
+    \item Puede verificar su encendido viendo la luz led roja del botón o teniendo los auriculares ya conectados y puestos se escuchara un aviso de que BlindAssist ya esta funcionando.
+
+\begin{center}
+\includegraphics[width=0.15\linewidth]{Recursos/imagenes centradas/blindON.jpg}
+\end{center}
+    
+    \item Presionar botón de detección 1 para activar la detección de elementos por IA (Es recomendado hacerlo en una habitación con poco movimiento o cantidad de personas para evitar una saturación y mensajes erróneos o confusos). Volver a presionar el dispositivo para desactivar la detección de elementos por IA
+
+\begin{center}
+\includegraphics[width=0.15\linewidth]{Recursos/imagenes centradas/boton de arriba presionado.png}
+\end{center}
+    
+    \item Presionar botón de detección 2 para activar la detección de elementos intrusos o irregulares frente al usuario.
+
+\begin{center}
+\includegraphics[width=0.15\linewidth]{Recursos/imagenes centradas/boton de abajo presionado.png}
+\end{center}
+
+\end{enumerate}
+
+\subsection{Colocación}
+El dispositivo puede sujetarse al pecho, cinturón o mochila mediante el sistema de acople, siempre orientado hacia adelante y sin obstrucciones en los sensores.
+
+\begin{center}
+\includegraphics[width=0.15\linewidth]{Recursos/imagenes centradas/blindquipado.jpg}
+\end{center}
+
+% ===========================================================
+\section{Uso del dispositivo}
+
+\subsection{Modos de alerta}
+\begin{itemize}
+    \item \textbf{Vibración:} indica obstáculos cercanos.
+    \item \textbf{Alerta de voz:} informa tipo de objeto o dirección.
+\end{itemize}
+
+\subsection{Interpretación de señales}
+
+\subsubsection*{Caso 1 – Obstáculo en el lado derecho}
+Cuando el sensor derecho detecta un objeto a corta distancia, el sistema reduce o ajusta la velocidad del motor derecho.
+
+\begin{center}
+
+\includegraphics[width=0.15\linewidth]{Recursos/imagenes centradas/deteccion lidar derecho.png}
+
+ \caption{Detección derecha y alerta. }
+
+\end{center}
+
+\subsubsection*{Caso 2 – Obstáculo en el lado izquierdo}
+Si el sensor izquierdo detecta un objeto cercano, el sistema disminuye o ajusta la velocidad del motor izquierdo.  
+
+\begin{center}
+
+\includegraphics[width=0.15\linewidth]{Recursos/imagenes centradas/deteccion lidar izquierdo.png}
+
+ \caption{Detección izquierda y alerta. }
+
+\end{center}
+
+
+\subsubsection*{Caso 3 – Obstáculo al frente}
+Cuando el sensor frontal percibe un objeto demasiado cerca, ambos motores responden al mismo tiempo.
+
+\begin{center}
+
+\includegraphics[width=0.15\linewidth]{Recursos/imagenes centradas/deteccion lidar central.png}
+
+ \caption{Detección centro y alerta. }
+
+\end{center}
+
+\subsubsection*{Caso 4 – Obstáculo al frente y a la izquierda}
+Si el sistema detecta objetos al frente y al lado izquierdo, el motor izquierdo comienza a funcionar de forma intermitente.  
+Esto indica que el dispositivo intenta girar hacia la derecha o alerta de una zona con obstáculos muy próximos.
+
+\begin{center}
+
+\includegraphics[width=0.15\linewidth]{Recursos/imagenes centradas/deteccion lidar central y izquierdo.png}
+
+ \caption{Detección centro-izquierda y alerta. }
+
+\end{center}
+
+\subsubsection*{Caso 5 – Obstáculo al frente y a la derecha}
+Cuando el dispositivo detecta obstáculos adelante y en el lado derecho, el motor derecho opera de manera intermitente.
+
+\begin{center}
+
+\includegraphics[width=0.15\linewidth]{Recursos/imagenes centradas/deteccion lidar central y derecha.png}
+
+ \caption{Detección centro-derecha y alerta. }
+
+\end{center}
+
+\subsubsection*{Caso 6 – Obstáculos al frente, derecha e izquierda}
+Si los tres sensores detectan objetos cercanos simultáneamente . En esta situación, ambos motores se activan al máximo indicando que está rodeado de obstáculos y no puede avanzar con seguridad.
+
+\begin{center}
+
+\includegraphics[width=0.15\linewidth]{Recursos/imagenes centradas/deteccion todos los lidars.png}
+
+ \caption{Detección centro-izquierda-derecha y alerta. }
+
+\end{center}
+
+\subsubsection{Intensidad}
+\item Dependiendo de la cercanía de los obstáculos, los motores variarán su intensidad de vibración para una alerta más precisa.
+
+\begin{center}
+
+\includegraphics[width=0.25\linewidth]{Recursos/imagenes centradas/deteccion objeto con diferencia de potencia.png}
+
+ \caption{Detección con variante de potencia. }
+
+\end{center}
+
+\subsubsection{Detección de personas/objetos.}
+La cámara detectará personas y/o objetos, y alertará esto a través de la voz del dispositivo.
+A continuación, algunos ejemplos:
+
+\begin{center}
+
+\includegraphics[width=0.15\linewidth]{Recursos/imagenes centradas/IA deteccion una persona.png}
+
+ \caption{Detección único individuo.}
+
+\includegraphics[width=0.15\linewidth]{Recursos/imagenes centradas/IA deteccion 3 personas.png}
+
+ \caption{Detección varios individuos.}
+
+\end{center}
+
+\begin{center}
+
+\includegraphics[width=0.15\linewidth]{Recursos/imagenes centradas/DETECCION OBJPER.jpg}
+
+ \caption{Detección de un individuo y un objeto. }
+
+\end{center}
+% ===========================================================
+\section{Mantenimiento}
+
+\subsection{Limpieza}
+\begin{itemize}
+    \item Limpiar con paño seco o ligeramente húmedo.
+    \item Evitar alcohol o líquidos corrosivos.
+    \item No abrir la carcasa con el equipo encendido.
+\end{itemize}
+
+% ===========================================================
+\section{Solución de problemas comunes}
+
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|p{5cm}|p{7cm}|}
+\hline
+\textbf{Problema} & \textbf{Causa posible} & \textbf{Solución} \\ \hline
+No enciende & Baterías descargadas o mal conectadas & Revisar carga y polaridad \\ \hline
+Sin sonido & Auriculares desconectados o volumen bajo & Conectar y ajustar volumen \\ \hline
+Sin vibración & Motor desconectado & Revisar conexión interna \\ \hline
+Vibraciones continuas & Sensor sucio u obstruido & Limpiar superficie del sensor \\ \hline
+Mensajes erróneos & Cámara desalineada o exceso de luz & Reajustar posición \\ \hline
+\end{tabular}
+\end{table}
+
+% ===========================================================
+\section{Especificaciones técnicas}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|>{\bfseries}l|l|}
+\hline
+Componente & Descripción \\ \hline
+Procesador & Raspberry Pi 4 (8 GB RAM) \\ \hline
+Sensores & 3 × TFmini LiDAR \\ \hline
+Cámara & Raspberry Pi Camera V2 / HQ \\ \hline
+Alimentación & 2 × Baterías 18650 (3.7 V) \\ \hline
+Autonomía & 4-6 horas continuas \\ \hline
+Sistema Operativo & Raspberry Pi OS con IA integrada \\ \hline
+Peso total & 300 g aprox. \\ \hline
+\end{tabular}
+\end{table}
+
+% ===========================================================
+\section{Seguridad del usuario}
+
+\begin{itemize}
+    \item No usar bajo lluvia intensa sin protección.
+    \item No apuntar la cámara directamente al sol.
+    \item No manipular partes internas mientras el sistema esté encendido.
+    \item Utilizar como complemento del bastón, no como sustituto.
+    \item No sumergir.
+\end{itemize}
+
+% ===========================================================
+\section{Contacto y soporte}
+
+\begin{itemize}
+    \item Mail de contacto: \href{blindassist2025@gmail.com}{blindassist2025@gmail.com}
+    \item Teléfono de contacto: +54 9 11 5817-4858
+    \item Instagram: \href{https://www.instagram.com/blindassist/}{https://www.instagram.com/blindassist/}
+    \item Página Web: \href{https://castiilloramiro.github.io/BlindWeb/}{https://castiilloramiro.github.io/BlindWeb/}
+\end{itemize}
+
+\subsection*{Registro de trabajo}
+    \begin{itemize}
+        \item trello: \href{https://trello.com/b/UIw0bKgf/kanban}{https://trello.com/b/UIw0bKgf/kanban}
+        \item github: \href{https://github.com/impatrq/BLINDSSIST}{https://github.com/impatrq/BLINDSSIST}
+    \end{itemize}
+
+
+\textbf{Proyecto BlindAssist}\\
+\textbf{Escuela de Educación Secundaria Tecnica N°7 "Taller Regional Quilmes"}\\
+\textbf{7° 2° Aviónica}\\
+
+
+Versión del manual: 1.0 – 2025
+
+\end{document}
