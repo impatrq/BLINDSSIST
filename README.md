@@ -4,9 +4,13 @@
   <img src="https://github.com/impatrq/BLINDSSIST/blob/main/firmware/pagina web/Multimedia/logos/Capa 0.png" alt="BLINDSSIST Logo" width="250">
 </p>
 
-
-
 <p align="center">
+
+<!-- Video de Presentación -->
+<a href="ACA_PONES_EL_LINK_DE_YOUTUBE_O_DRIVE" target="_blank">
+  <img src="https://img.shields.io/badge/Video%20de%20Presentación-FF0000?style=for-the-badge&logo=youtube&logoColor=white" alt="Video de presentación">
+</a>
+<br>
 
 <!-- Instagram -->
 <a href="https://www.instagram.com/blindassist/" target="_blank">
@@ -23,8 +27,10 @@
   <img src="https://img.shields.io/badge/Sitio%20Web-4CAF50?style=for-the-badge&logo=google-chrome&logoColor=white" alt="Web">
 </a>
 
+<!-- Gmail -->
 <a href="https://mail.google.com/mail/?view=cm&to=blindassist2025@gmail.com" target="_blank">
-    <img alt="Gmail" src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" />
+  <img alt="Gmail" src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" />
+</a>
 
 <!-- Linktree -->
 <a href="http://linktr.ee/blindassist?fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQMMjU2MjgxMDQwNTU4AAGnGmq88jx-DNTPv_4anH8uwYERlkiLt2I39dWJovY6Oz3yGSi1BDTDOGQVvNU_aem_e0TZLUZKbtbvNXp4jfwh2Q" target="_blank">
@@ -32,7 +38,6 @@
 </a>
 
 </p>
-
 ## 🎯 Descripción  
 
 BLINDASSIST es un proyecto orientado a facilitar el tránsito de usuarios con discapacidad visual en su vida cotidiana. A través de un dispositivo colgante —o integrado en algún accesorio— funciona como ayuda al bastón tradicional, ofreciendo:  
@@ -144,6 +149,7 @@ Agradecemos profundamente a **TodoMicro** por su valioso apoyo y patrocinio de e
 <p align="center">
   <b>Hecho con ❤️ para mejorar la accesibilidad</b>
 </p>
+
 
 
 
