@@ -13,6 +13,11 @@
 \usepackage{graphicx}
 \usepackage{fancyhdr}
 \usepackage{adjustbox}
+\usepackage[a4paper, margin=0.8in]{geometry} 
+\usepackage{tikz}
+% Librerías necesarias
+\usetikzlibrary{positioning, shapes, arrows, fit, calc} 
+
 
 \geometry{margin=2.5cm}
 
@@ -135,9 +140,10 @@ DNI: 47510542\\
 \subsubsection*{Fecha de Inicio}
 14/4/2025
 \subsubsection*{Duración del proyecto}
-25 Semanas
+30 Semanas
 \subsubsection*{Esfuerzo del proyecto}
-Maximo de 8 horas de trabajo (200 horas de trabajo en todo el año)
+Tiempo individual por semana: Máximo de 8 horas de trabajo (240 horas de trabajo en todo el año)
+
 \subsubsection*{Lenguajes utilizados}
 \begin{itemize}
 \item LaTex
@@ -163,7 +169,7 @@ Maximo de 8 horas de trabajo (200 horas de trabajo en todo el año)
 \section{Descripción}
 
 \subsection{Objetivo}
-El objetivo de este proyecto es mantener la integridad de las personas ciegas o con algún tipo de discapacidad visual en cualquier tipo de entorno urbano y darles un mayor nivel de conciencia en entornos mas cerrados. Para ello, desarrollamos un dispositivo que mediante reconocimiento por inteligencia artificial y la detección de objetos utilizando tecnología láser para avisar al usuario sobre un obstáculo en frente, por encima de la cadera, la presencia de alguna persona en un espacio cerrado y la cantidad de individuos que se encuentran en el mismo espacio, contando con alertas sonoras y vibratorias que no alteren su percepción y condición actual.Este dispositivo funcionara como una ayuda al bastón que utilizan en su día a día sin modificar su efectividad o tratar de reemplazar su función.
+El objetivo de este proyecto es mantener la integridad de las personas ciegas o con algún tipo de discapacidad visual en cualquier tipo de entorno urbano y darles un mayor nivel de conciencia en entornos mas cerrados. Para ello, desarrollamos un dispositivo que mediante reconocimiento por inteligencia artificial y la detección de objetos utilizando tecnología láser para avisar al usuario sobre un obstáculo en frente, por encima de la cadera, la presencia de alguna persona en un espacio cerrado y la cantidad de individuos que se encuentran en el mismo espacio, contando con alertas sonoras y vibratorias que no alteren su percepción y condición actual. Este dispositivo funcionara como una ayuda al bastón que utilizan en su día a día sin modificar su efectividad o tratar de reemplazar su función.
 
 \subsection{Alcance}
 \begin{itemize}
@@ -208,7 +214,7 @@ El proyecto está destinado a personas con impedimentos visuales. En el mundo ha
 
 \begin{itemize}
 
-    \item BlindAssist es un proyecto que busca facilitar el tránsito de sus usuarios en la vida cotidiana. A través de un dispositivo colgante que puedan llevar encima mismos o en algún accesorio que mejore su movilidad. Esto lo lograríamos con un conjunto de componentes que trabajan en coordinación. Primero una cámara que detecta elementos específicos, por poner un ejemplo: cestos de basura, señalizaciones, etc. Segundo, unos sensores láser que detectan la proximidad de obstáculos cómo ramas u postes. Cómo tercero, alertas sensoriales a través de audio y vibraciones para alertar al usuario y que este pueda evitar estos inconvenientes.
+    \item BlindAssist es un proyecto que busca facilitar el tránsito de los usuarios en la vida cotidiana. A través de un dispositivo colgante que puedan llevar encima o en algún accesorio que mejore su movilidad. Esto lo lograríamos con un conjunto de componentes que trabajan en coordinación. Primero una cámara que detecta elementos específicos, por poner un ejemplo: cestos de basura, señalizaciones, etc. Segundo, unos sensores láser que detectan la proximidad de obstáculos cómo ramas u postes. Cómo tercero, alertas sensoriales a través de audio y vibraciones para alertar al usuario y que este pueda evitar estos inconvenientes.
     
 \end{itemize}
 
@@ -218,6 +224,16 @@ El proyecto está destinado a personas con impedimentos visuales. En el mundo ha
     El dispositivo realizará mediciones de distancia mediante los sensores TFmini LIDAR, estos se encuentran dispuestos de tal forma que puedan cubrir varios ángulos en frente de la persona. Acorde a la detección de los sensores, se le comunica al usuario la posición de un objeto intruso en el rango frontal, dependiendo que sensores detectan un objeto a menor distancia que 120cm se realizara un control de potencia de los motores internos, hay dos motores de vibración, uno a la izquierda y derecha del dispositivo, cada uno acorde a los sensores LIDAR de ambos lados, Cuando se detecta algo en el tercer TFmini cambia la organización, ambos motores emitirán la misma potencia, en caso de que el motor frontal y lateral detecten algo dicho lado tendrá un control titilante de la vibración, en caso de que los tres sensores se activen, ambos motores vibran al máximo de potencia.\\
     El sistema de detección basado en Inteligencia Artificial (IA), utiliza la cámara para capturar imágenes continuamente. Un modelo de IA avanzado (YOLOv8) actúa como el cerebro, escaneando cada imagen a alta velocidad para identificar y clasificar objetos relevantes para la seguridad, como personas, autos, bicicletas, camiones y objetos de tropiezo (botellas, etc.). Solo se anuncia un objeto si la IA está lo suficientemente segura de su clasificación (más del 60\% de confianza).
     La comunicación se realiza mediante voz asíncrona. Esta es la clave de la velocidad: el mensaje de voz (``Una persona", "3 autos", "Moto fuera") se envía a un proceso en segundo plano, permitiendo que la cámara y la IA sigan escaneando el entorno sin detenerse ni un instante. Para evitar el ruido constante, un filtro de tiempo de espera (cooldown) asegura que solo se anuncien los cambios de estado (algo nuevo apareció, se fue o cambió de cantidad) y no se repita la misma alerta cada pocos segundos.
+
+    
+
+    \subsection{Diagrama de bloques general}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\linewidth]{Carpeta tecnica/diagrama completo.png}
+    \caption{Diagrama del proyecto BlindAssist}
+\end{figure}
     
 \end{itemize}
 
@@ -828,79 +844,101 @@ El flujo de información y la lógica de control se manejan principalmente en el
 La arquitectura del sistema es muy escalable. Al estar modularizado, se podrían añadir fácilmente nuevas clases sin modificar la lógica central del proyecto.
 
 \subsection{Detección por láser}
-\subsubsection{Libreria TFmini}
+\subsubsection{Librería TFmini}
 Esta sección describe el funcionamiento del código implementado para la lectura simultánea de tres sensores LiDAR TFmini conectados a diferentes puertos UART de una Raspberry Pi 4.
 
 El sistema permite:
 \begin{itemize}
-\item Recepción continua de datos desde los sensores.
+\item Recepción continua de datos provenientes de los sensores.
 \item Procesamiento y almacenamiento de las distancias medidas.
-\item Ejecución en paralelo mediante hilos (multithreading).
-\item Disponibilidad centralizada de los valores para otras funciones del sistema.
+\item Ejecución paralela mediante hilos (\textit{multithreading}).
+\item Acceso centralizado a los valores de distancia para otros módulos del sistema.
 \end{itemize}
 
-\textbf{Descripción General del Sistema:}
+\textbf{Descripción general del sistema:}
 El programa se estructura en cuatro bloques principales:
 \begin{itemize}
-\item Configuración global: Definición de librerías, estructuras de datos y variables compartidas.
-\item Módulo de adquisición de datos: Funciones de lectura desde los sensores a través de los puertos UART.
-\item Gestión de hilos: Creación de procesos concurrentes para la lectura simultánea.
-\item Bucle principal: Supervisión e impresión periódica de los valores capturados.
+\item \textbf{Configuración global:} Definición de librerías, estructuras de datos y variables compartidas.
+\item \textbf{Módulo de adquisición de datos:} Funciones encargadas de la lectura desde los sensores a través de los puertos UART.
+\item \textbf{Gestión de hilos:} Creación de procesos concurrentes para la lectura simultánea de los tres sensores.
+\item \textbf{Bucle principal:} Supervisión e impresión periódica de las distancias capturadas.
 \end{itemize}
-La arquitectura se basa en la comunicación serial estándar (UART) a una velocidad de 115200 baudios, con tramas de 9 bytes emitidas por cada TFmini.
+La arquitectura se basa en la comunicación serial estándar (UART) a una velocidad de 115200 baudios, utilizando tramas de 9 bytes emitidas de forma continua por cada módulo TFmini.
 
-\paragraph{Librerías:}
+\paragraph{Librerías utilizadas:}
 \begin{itemize}
-\item \textbf{serial (pyserial):} Permite abrir, configurar y gestionar la comunicación UART.
-\item \textbf{time:} Se utiliza para pausas entre lecturas y evitar sobrecarga del procesador.
-\item \textbf{threading:} Facilita la ejecución concurrente de múltiples lecturas de sensores.
+\item \textbf{serial (pyserial):} Permite abrir, configurar y manejar los puertos UART para la comunicación con los sensores.
+\item \textbf{time:} Proporciona retardos controlados para evitar el uso excesivo de CPU.
+\item \textbf{threading:} Facilita la ejecución concurrente de múltiples procesos de lectura.
 \end{itemize}
 
-\paragraph{Estructuras Globales:}
+\paragraph{Estructura global de datos:}
 \begin{verbatim}
 distancias = {
-"uart1": None,
-"uart2": None,
-"uart3": None,
+    "uart1": None,
+    "uart2": None,
+    "uart3": None,
 }
 \end{verbatim}
-Diccionario que almacena la última distancia válida obtenida de cada sensor. Inicialmente los valores son None y se actualizan en tiempo real. Facilita la consulta de datos desde cualquier parte del programa.
+El diccionario \texttt{distancias} almacena los últimos valores de distancia válidos recibidos desde cada puerto UART. Inicialmente, los valores son \texttt{None} y se actualizan en tiempo real conforme llegan nuevas mediciones. Este diseño permite el acceso centralizado desde otros módulos del programa.
 
-\paragraph{Función Genérica de Adquisición de Datos:}
-
+\paragraph{Función genérica de adquisición de datos:}
 \begin{verbatim}
 def getTFminiData(port, key_name):
-ser = serial.Serial(port, 115200, timeout=1)
+    ser = serial.Serial(port, 115200, timeout=1)
 \end{verbatim}
 
-\textbf{Flujo de la función:} 
-Apertura del puerto serie con parámetros: Velocidad de 115200 baudios, timeout de 1 segundo. Bucle infinito de lectura: Verifica si hay al menos 9 bytes disponibles (ser.in\_waiting > 8). Lee un paquete completo (ser.read(9)). Validación de cabecera: Primeros dos bytes deben ser 0x59 0x59. Si no coincide, se descarta la trama. Reconstrucción de la distancia: Byte [2] = parte baja (Low). Byte [3] = parte alta (High). Cálculo: distance = low + (high << 8).
+\textbf{Flujo de la función:}
+\begin{enumerate}
+\item Se abre el puerto serial correspondiente con velocidad de 115200 baudios y un tiempo de espera de 1 segundo.
+\item Se ejecuta un bucle infinito que supervisa si existen bytes disponibles en el buffer (\texttt{ser.in\_waiting > 0}).
+\item Al detectar datos, se buscan los bytes de cabecera 0x59 0x59, característicos del protocolo TFmini.
+\item Si la cabecera es válida, se leen los 7 bytes restantes para completar la trama de 9 bytes.
+\item Se extraen los bytes de distancia: el primer byte (\texttt{low}) representa la parte baja y el segundo (\texttt{high}) la parte alta. El cálculo final se realiza mediante:
+\[
+\text{distance} = \text{low} + (\text{high} \ll 8)
+\]
+\item Se calcula el \textit{checksum} sumando todos los bytes (excepto el último) junto con la cabecera, y aplicando una máscara de 8 bits:
+\[
+\text{checksum} = (0x59 + 0x59 + \text{sum(frame[:-1])}) \& 0xFF
+\]
+\item Si el \textit{checksum} coincide con el último byte de la trama, el valor se considera válido y se almacena en el diccionario global bajo la clave correspondiente.
+\item En caso contrario, se descarta la trama y se muestra un mensaje de error.
+\item Se incluye un retardo de 5 milisegundos (\texttt{time.sleep(0.005)}) para evitar un consumo excesivo de CPU.
+\end{enumerate}
 
-\end{quoting}
-
-\paragraph{Almacenamiento de datos}
-La distancia calculada se guarda en el diccionario global bajo la clave correspondiente (uart1, uart2, uart3). Retardo de control time.sleep(0.01) para liberar recursos del procesador.
-
-\paragraph{Funciones Específicas por Puerto UART}
-
+\paragraph{Funciones específicas por puerto UART:}
 \begin{verbatim}
 def getTFminiData_uart1():
-getTFminiData("/dev/serial0", "uart1")
-\end{verbatim}
-Función getTFminiData\_uart1: Llama al puerto /dev/serial0. Función getTFminiData\_uart2: Llama al puerto /dev/ttyUSB1. Función getTFminiData\_uart3: Llama al puerto /dev/ttyUSB2. Estas funciones permiten escalar el sistema sin modificar la lógica principal.
+    getTFminiData("/dev/ttyUSB0", "uart1")
 
-\paragraph{Gestión de Hilos y Ejecución Principal}
+def getTFminiData_uart2():
+    getTFminiData("/dev/ttyUSB1", "uart2")
+
+def getTFminiData_uart3():
+    getTFminiData("/dev/ttyS0", "uart3")
+\end{verbatim}
+Cada función invoca la función genérica de adquisición con el puerto y la clave correspondientes. Esto permite una escalabilidad sencilla del sistema, facilitando la conexión de nuevos sensores sin alterar la lógica principal.
+
+\paragraph{Gestión de hilos y ejecución principal:}
 \begin{verbatim}
 if __name__ == '__main__':
-...
+    ...
 \end{verbatim}
-Creación de hilos: Cada hilo ejecuta una de las funciones específicas (uart1, uart2, uart3). Se utilizan hilos daemon, lo que asegura que se cierren cuando termine el programa. Ejecución concurrente: Los tres hilos inician en paralelo con .start(). Se garantiza la lectura simultánea de los sensores. Bucle principal de supervisión: Cada segundo imprime las distancias almacenadas en distancias y permite monitorear en consola el funcionamiento del sistema. Interrupción del usuario: Al presionar Ctrl + C, se captura la excepción KeyboardInterrupt. Se muestra un mensaje de salida segura.
+\begin{itemize}
+\item Se crean tres hilos (\texttt{Thread}) que ejecutan las funciones \texttt{getTFminiData\_uart1}, \texttt{getTFminiData\_uart2} y \texttt{getTFminiData\_uart3}.
+\item Los hilos se definen como \texttt{daemon}, asegurando su finalización automática al detener el programa.
+\item Se inician los tres hilos en paralelo mediante \texttt{.start()}, logrando la lectura simultánea de los tres sensores.
+\item El bucle principal imprime en consola los valores de distancia almacenados en \texttt{distancias} cada segundo, permitiendo supervisar el correcto funcionamiento de cada módulo.
+\item Se gestiona la interrupción manual del usuario (\texttt{KeyboardInterrupt}) para garantizar un cierre seguro del sistema.
+\end{itemize}
 
 \begin{figure}[H]
-\noindent\hspace*{-0.7in}% desplaza hacia la izquierda el origen
+\noindent\hspace*{-0.7in}
 \includegraphics[width=1.2\linewidth,height=1.1\linewidth]{Carpeta tecnica/diagrama de flujo TFmini3.png}
-\caption{Diagrama de flujo de la lectura de distancias}
+\caption{Diagrama de flujo del proceso de lectura de distancias mediante sensores TFmini}
 \end{figure}
+
 
 \subsubsection{Control de Motores}
 
@@ -1029,80 +1067,232 @@ Esto evita errores en ejecuciones posteriores.
     \caption{Diagrama de flujo e la logica PWM}
 \end{figure}
 
-\subsubsection{Código Final del Control Principal (control\_principal.py)}
+\subsubsection{Código Final del Sistema Principal ()}
 
-La función principal de este script es coordinar todos los módulos de hardware y software: cámara, sensores LiDAR, motores de vibración y el sistema de voz. Gracias a esta integración, el dispositivo puede ofrecer detección de objetos y advertencia de obstáculos de manera simultánea y en tiempo real.
+Este script constituye el núcleo operativo del dispositivo, integrando todos los subsistemas de hardware y software: sensores LiDAR TFmini3, cámara, modelo de inteligencia artificial YOLOv8, motores hápticos y síntesis de voz.  
+Su propósito es permitir la detección y aviso simultáneo de obstáculos mediante vibración, así como el reconocimiento visual de objetos con retroalimentación auditiva en tiempo real.
 
-\paragraph{Importación de Librerías y Configuración}
-
+\paragraph{Importación de Librerías y Configuración Inicial}
 \begin{itemize}
-Al inicio, el código importa distintas librerías necesarias para manejar el hardware y los módulos de inteligencia artificial:
+\item \textbf{time, threading:} Controlan los tiempos de ejecución y la ejecución concurrente mediante hilos.
+\item \textbf{RPi.GPIO:} Permite la comunicación con los pines GPIO de la Raspberry Pi, tanto para entradas (botones) como salidas (motores).
+\item \textbf{subprocess, sys, os:} Facilitan la interacción con el sistema operativo (como ejecutar comandos o validar archivos).
+\item \textbf{cv2 y picamera2:} Se utilizan para capturar y procesar imágenes provenientes de la cámara.
+\item \textbf{ultralytics.YOLO:} Implementa el modelo de detección de objetos YOLOv8.
 \end{itemize}
 
-
 \begin{verbatim}
-import RPi.GPIO as GPIO
-import threading
 import time
+import threading
+import RPi.GPIO as GPIO
+import subprocess
+import sys
+import os
 import cv2
+from picamera2 import Picamera2
 from ultralytics import YOLO
 \end{verbatim}
 
-En términos generales, estas librerías permiten conectar la Raspberry Pi con el entorno físico (botones, motores, cámara), al mismo tiempo que se integra el modelo de IA encargado de reconocer objetos.
+El programa también importa el módulo externo \texttt{TFmini3}, que gestiona la comunicación serial con los tres sensores LiDAR.  
+Si la importación falla (por ejemplo, durante pruebas sin hardware), el sistema genera funciones simuladas con valores fijos, permitiendo verificar la lógica general sin requerir sensores conectados.
 
-\paragraph{Gestión de Pines y Estados Globales}
-\begin{itemize}
-
-El sistema trabaja con botones y motores conectados a pines GPIO de la Raspberry Pi. Estos pines permiten encender o apagar funciones al pulsar un botón y regular la intensidad de vibración de los motores mediante señales PWM.
-
-\end{itemize}
-
+\paragraph{Configuración de Hardware y Pines GPIO}
 \begin{verbatim}
-PIN_DETECCION = 25   # Botón para activar la cámara
-PIN_LIDAR = 8        # Botón para activar el LiDAR
-MOTOR_PIN1 = 18
+MOTOR_PIN1 = 12
 MOTOR_PIN2 = 13
+BUTTON_HAPTIC_PIN = 17
+BUTTON_VISUAL_PIN = 27
 \end{verbatim}
 
-De este modo, el usuario puede elegir si activa la detección de objetos o el aviso de obstáculos, cada uno ejecutado en hilos separados.
+Los motores de vibración están conectados a pines PWM, mientras que los botones utilizan resistencias \textit{pull-up} internas para evitar lecturas erróneas.  
+La configuración general se realiza con:
+\begin{verbatim}
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(..., GPIO.OUT)
+GPIO.setup(..., GPIO.IN, pull_up_down=GPIO.PUD_UP)
+\end{verbatim}
 
-\paragraph{Lógica Multihilo (Threads)}
-  
+El PWM de ambos motores se inicializa con una frecuencia de 100 Hz y ciclo de trabajo 0\%, de modo que permanecen inactivos hasta que la lógica háptica los active.
+
+\paragraph{Gestión de Estados Globales y Botones}
+
+Se definen dos variables globales que controlan los modos de funcionamiento:
 \begin{itemize}
-El programa aprovecha la librería threading para ejecutar varias tareas al mismo tiempo.
-    \item Al presionar el botón de detección, se inicia un hilo que activa la cámara y el modelo de IA. Este módulo captura imágenes, analiza lo que ve y notifica mediante voz qué objetos han aparecido o desaparecido en el entorno.
-    \item Al presionar el botón de LiDAR, se inician varios hilos que leen la distancia desde los sensores y controlan los motores de vibración. Cuanto más cerca esté un obstáculo, más intensa es la vibración.
+\item \texttt{estado\_haptico\_activo}: habilita o desactiva el control por vibración.
+\item \texttt{estado\_visual\_activo}: habilita o desactiva el módulo de visión e inteligencia artificial.
 \end{itemize}
 
-De esta forma, el usuario recibe información visual traducida tanto en mensajes de voz como en señales hápticas.
+El monitoreo de botones se realiza mediante la función:
+\begin{verbatim}
+def gestionar_botones():
+    ...
+\end{verbatim}
+La función detecta los cambios de estado de cada botón (por flanco descendente) y alterna el modo correspondiente.  
+Esto permite activar o desactivar independientemente las funciones hápticas o visuales mediante una sola pulsación.
 
-\paragraph{Manejo de Eventos con GPIO}
-\begin{itemize}
-El sistema está preparado para reaccionar automáticamente cuando se presiona un botón. Esto se logra configurando los pines de entrada de la Raspberry Pi con interrupciones:
-\end{itemize}
+\paragraph{Control Háptico mediante Sensores LiDAR}
+
+Esta sección del código traduce las distancias medidas por los tres sensores TFmini3 en señales PWM que controlan la intensidad de los motores.  
+El objetivo es proporcionar retroalimentación táctil proporcional a la proximidad de obstáculos.
 
 \begin{verbatim}
-GPIO.add_event_detect(PIN_DETECCION, GPIO.FALLING, 
-                      callback=boton_callback, bouncetime=300)
+def calcular_duty(d):
+    if d is None or d >= 120:
+        return 0
+    return min(100, 120 - d)
 \end{verbatim}
 
-La función \texttt{boton\_callback()} determina qué botón fue presionado y activa o desactiva el hilo correspondiente. Si un módulo ya estaba en ejecución, el mismo botón permite detenerlo.
+Esta función convierte las distancias (en cm) a un ciclo de trabajo PWM de 0 a 100\%, donde objetos más cercanos producen mayor vibración.  
+El bucle principal se implementa en \texttt{control\_sensores()}, que ejecuta la lógica condicional de los casos predefinidos:
+\begin{itemize}
+\item Si los tres sensores detectan un obstáculo a menos de 120 cm, ambos motores vibran al 100\%.
+\item Si dos sensores laterales (UART2 y UART3 o UART1 y UART3) detectan obstáculos, el motor correspondiente titila.
+\item Si sólo el sensor frontal (UART3) detecta algo, ambos motores vibran de manera uniforme.
+\item Si únicamente uno de los sensores laterales detecta proximidad, sólo el motor correspondiente se activa.
+\end{itemize}
 
-\paragraph{Función Principal (main)}
+Esta estructura asegura un lenguaje háptico intuitivo para el usuario, reflejando la ubicación del obstáculo con patrones de vibración diferenciados.
 
+\paragraph{Módulos de Detección Visual e Inteligencia Artificial}
 
-El núcleo del programa es la función \texttt{main()}, que inicia el sistema, espera unos segundos para asegurar que todo el hardware esté listo, y finalmente queda a la espera de que el usuario presione algún botón:
+El sistema visual se implementa mediante un conjunto de clases modulares:
+
+\begin{itemize}
+\item \textbf{Camara:} Gestiona la inicialización, captura y cierre del flujo de video mediante \texttt{Picamera2}. Convierte los fotogramas a formato BGR compatible con OpenCV.
+\item \textbf{Voz:} Usa el motor \texttt{espeak} para generar avisos por voz sin bloquear la ejecución principal. Se ejecuta en hilos secundarios para mantener la fluidez del sistema.
+\item \textbf{Traductor:} Contiene un diccionario que traduce las etiquetas de detección de YOLO (en inglés) al español, mejorando la comprensión de los avisos.
+\item \textbf{IA:} Carga el modelo YOLOv8 preentrenado y filtra las detecciones según su nivel de confianza y tipo de objeto permitido.
+\end{itemize}
+
+La clase principal \textbf{AsistentePrincipal} organiza todos los módulos visuales.  
+Durante la ejecución, captura continuamente imágenes, las analiza con el modelo YOLO y anuncia los cambios detectados (aparición o desaparición de objetos) mediante voz.  
+El método interno \texttt{\_\_anunciar\_detecciones()} compara los objetos actuales con los detectados previamente y genera mensajes cortos como:
+\textit{“Una persona.”, “Dos Personas.” o “Persona fuera.”}
+
+\paragraph{Lógica Multihilo y Ejecución Simultánea}
+
+Gracias a la librería \texttt{threading}, el sistema puede ejecutar múltiples procesos al mismo tiempo:
+\begin{itemize}
+\item Un hilo para cada sensor LiDAR.
+\item Un hilo para la gestión de botones físicos.
+\item Un hilo para el control háptico (PWM).
+\item Un hilo para la detección visual (cámara e IA).
+\end{itemize}
+
+Esto permite que el usuario reciba alertas táctiles y auditivas sin interrupciones, incluso mientras la cámara analiza el entorno.
+
+\paragraph{Función Principal (\texttt{main})}
 
 \begin{verbatim}
 def main():
-    print("[INFO] Esperando 10 segundos...")
-    time.sleep(10)
-    iniciar_gpio()
-    voz = Voz()
-    voz.hablar("Sistema listo para operar.")
+    asistente = AsistentePrincipal()
+    ...
 \end{verbatim}
 
-Esto asegura un arranque limpio y confiable.
+La función principal inicializa todos los hilos mencionados y mantiene el programa en ejecución indefinidamente.  
+En caso de interrupción manual (\texttt{Ctrl + C}), el sistema detiene el PWM, limpia los pines GPIO y libera los recursos del hardware, garantizando un apagado seguro.
+
+\begin{figure}[h!]
+    \centering
+    \small % Usamos fuente pequeña para aprovechar el espacio
+    
+    % Definición de estilos de nodos usando \tikzset
+    \tikzset{
+        startend/.style={ellipse, draw, fill=green!30, text width=6em, text centered, minimum height=1em},
+        thread/.style={rectangle, draw, fill=orange!30, text width=8em, text centered, rounded corners, minimum height=2em, align=center},
+        module/.style={rectangle, draw, fill=blue!20, text width=9em, text centered, rounded corners, minimum height=2em, align=center},
+        data/.style={trapezium, draw, fill=yellow!20, text width=6em, text centered, minimum height=1em, align=center, inner xsep=5pt},
+        decision/.style={diamond, draw, fill=red!20, text width=5em, text badly centered, inner sep=0pt, aspect=1.5, align=center},
+        hardware/.style={rectangle, draw, fill=gray!40, text width=6em, text centered, minimum height=1em, align=center},
+        line/.style={draw, -latex'},
+        fitbox/.style={rectangle, draw, dashed, thick, inner sep=10pt, text width=12em, align=left} 
+    }
+
+    \begin{tikzpicture}[node distance = 0.8cm, auto, scale=0.9, transform shape]\label{blindassist_vertical_flow_perfect}
+    
+        % --- SECCIÓN 1: INICIO y HILOS PRINCIPALES ---
+        \node [startend] (main_start) {MAIN START};
+        \node [module, below=of main_start, node distance=1.2cm] (init) {Inicialización General (GPIO, PWM, Clases)};
+        
+        % Hilos de Lectura LiDAR
+        \node [thread, below=of init] (thread_l_grp) {Hilos 1, 2, 3: Lectura Asíncrona de LiDARs};
+        
+        % Thread Háptico
+        \node [thread, below=of thread_l_grp] (ctrl_thread) {Hilo 4: control\_sensores (Lazo Háptico)};
+        
+        % Thread Visual/IA
+        \node [thread, below=of ctrl_thread, yshift=-0.5cm] (assist_thread) {Hilo 5: Asistente Principal (Lazo Visual/IA)};
+        
+        % --- SECCIÓN 2: LÓGICA HÁPTICA ---
+        
+        \node [module, below left=1.0cm and 0.5cm of ctrl_thread] (calc_duty) {Calcular Duty Cycle (Distancia a PWM)};
+        \node [decision, below=of calc_duty] (case_logic) {Evaluar Casos de Proximidad (Prioridad Lógica)};
+        \node [hardware, below=of case_logic] (motores) {Activar/Modular Motores (PWM)};
+        
+        % Dibuja la caja de LÓGICA HÁPTICA
+        \node [fitbox, fit=(calc_duty) (motores) (ctrl_thread)] (fit_haptic) {};
+        \node at (fit_haptic.north west) [anchor=north west, xshift=5pt, yshift=-5pt, font=\bfseries] {LÓGICA HÁPTICA};
+
+        % Conexiones Hápticas
+        \path [line] (ctrl_thread) -- (calc_duty);
+        \path [line] (calc_duty) -- (case_logic);
+        \path [line] (case_logic) -- (motores);
+        
+        % Bucle Háptico (Desvío completo a la izquierda)
+        \coordinate (loop_haptic_corner) at ($(motores.west) + (-1.5cm, 0)$);
+        \path [line] (motores.west) -| (loop_haptic_corner) |- (ctrl_thread.west);
+
+        % --- SECCIÓN 3: LÓGICA VISUAL / IA ---
+        
+        % AJUSTE: Aumentar text width para que el texto Camara.capturar_frame() quepa bien
+        \node [module, below right=1.0cm and 0.5cm of ctrl_thread, text width=10.5em] (cam_capt) {Camara.capturar\_frame()};
+        \node [module, below=of cam_capt] (ia_analize) {IA.analizar\_imagen() (YOLOv8)};
+        \node [module, below=of ia_analize] (announce_check) {Comparar y Generar Anuncio};
+        
+        \node [decision, below=of announce_check] (changes) {Anuncio Necesario?};
+        
+        \node [module, right=of changes, node distance=2.5cm, yshift=-0.5cm] (voice_speak) {Voz.hablar(Mensaje) (Hilo asíncrono)};
+        
+        \node [module, below=of changes] (update_state) {Actualizar Estado y Esperar (time.sleep)};
+        
+        % Dibuja la caja de LÓGICA VISUAL
+        \node [fitbox, fit=(cam_capt) (update_state) (voice_speak) (assist_thread)] (fit_visual) {};
+        \node at (fit_visual.north west) [anchor=north west, xshift=5pt, yshift=-5pt, font=\bfseries] {LAZO VISUAL / IA};
+
+        % Conexiones Visuales
+        \path [line] (assist_thread) -- (cam_capt);
+        \path [line] (cam_capt) -- (ia_analize);
+        \path [line] (ia_analize) -- (announce_check);
+        \path [line] (announce_check) -- (changes);
+        
+        % Lógica de Anuncio de Voz
+        \path [line] (changes) -- node[above] {Sí} (voice_speak);
+        \path [line] (changes) -- node[left] {No} (update_state);
+        \path [line] (voice_speak) |- (update_state); 
+
+        % Bucle Visual (AJUSTE: Redirigido para no cruzar voice_speak)
+        \coordinate (loop_visual_bend) at ($(voice_speak.south) + (1.5cm, -0.5cm)$); % Punto de giro debajo de voice_speak
+        \path [line] (update_state.east) -- ++(1.5cm, 0) |- (loop_visual_bend) |- (cam_capt.east);
+        
+        % --- SECCIÓN 4: CONEXIONES EXTERNAS Y CIERRE ---
+        
+        \node [startend, below=of update_state, node distance=2.5cm] (main_end) {MAIN END (Cleanup)};
+
+        % Conexiones de Hardware (Evitan cruces)
+        \node [hardware, above left=1.2cm and 2.5cm of init] (lidar_h) {Sensores LiDAR (Entrada)};
+        \node [hardware, above right=1.2cm and 2.5cm of init] (camera_h) {Cámara (Entrada)};
+        
+        \path [line, draw=gray] (lidar_h) -- (thread_l_grp);
+        \path [line, draw=gray] (camera_h) -- (assist_thread);
+
+        % Conexión del flujo principal al final
+        \path [line] (update_state) -- (main_end); 
+
+    \end{tikzpicture}
+    \caption{Diagrama de Bloques de BlindAssist (Optimizado para A4 Vertical y sin Cruces)}
+\end{figure}
+
+
 
 \paragraph{Procedimiento de Despliegue y Arranque Automático}
 
@@ -1337,6 +1527,18 @@ Benewake.
 \emph{Control de motores:}
 \href{https://github.com/impatrq/BLINDSSIST/blob/main/firmware/TFmini/ContPWM.py}{https://github.com/impatrq/BLINDSSIST/ContPWM.py}
 
+\bibitem{Cam}
+\emph{Codigo de deteccion de IA:}
+\href{https://github.com/impatrq/BLINDSSIST/blob/main/firmware/main.py}{https://github.com/impatrq/BLINDSSIST/mainPOO.py}
+
+\bibitem{POO}
+\emph{Codigo de Python orientado a objetos: }
+\href{https://github.com/impatrq/BLINDSSIST/blob/main/firmware/mainPOO.py}{https://github.com/impatrq/BLINDSSIST/mainPOO.py}
+
+\bibitem{main}
+\emph{Codigo principal de función}
+\href{https://github.com/impatrq/BLINDSSIST/blob/main/firmware/controltfminiDeteccion.py}{https://github.com/impatrq/BLINDSSIST/controltfminiDeteccion.py}
+
 \subsection{Redes sociales}
 \bibitem{Página web}
 \emph{Carpeta de Web BlindAssist}
@@ -1353,6 +1555,14 @@ Benewake.
 \bibitem{instagram}
 \emph{Instagram oficial de BlindAssist:}
 \href{https://www.instagram.com/blindassist/}{https://www.instagram.com/blindassist/}
+
+\bibitem{linkedin}
+\emph{Linkedin oficial de BlindAssist:}
+\href{https://www.linkedin.com/in/proyecto-blindassist-72b0a7396/}{https://www.linkedin.com/proyecto-blindassist}
+
+\bibitem{youtube}
+\emph{Youtube oficial de BlindAssist:}
+\href{https://www.youtube.com/@ProyectoBlindAssist}{https://www.youtube.com/@ProyectoBlindAssist}
 
 \subsection{Documentación}
 
